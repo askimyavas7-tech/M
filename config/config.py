@@ -12,9 +12,9 @@ load_dotenv()
 
 # Get it from my.telegram.org
 
-API_ID = int(getenv("API_ID", "21194358"))
+API_ID = int(getenv("API_ID", ""))
 
-API_HASH = getenv("API_HASH", "9623f07eca023e4e3c561c966513a642")
+API_HASH = getenv("API_HASH", "")
 
 ## Get it from @Botfather in Telegram.
 
@@ -47,11 +47,11 @@ SONG_DOWNLOAD_DURATION = int(
 
 # You'll need a Private Group ID for this.
 
-LOG_GROUP_ID = int(getenv("LOG_GROUP_ID","-1002474970241"))
+LOG_GROUP_ID = int(getenv("LOG_GROUP_ID",""))
 
 # A name for your Music bot.
 
-MUSIC_BOT_NAME = getenv("MUSIC_BOT_NAME","")
+MUSIC_BOT_NAME = getenv("MUSIC_BOT_NAME","Kumsal Muzik")
 
 # Your User ID.
 
@@ -74,7 +74,7 @@ UPSTREAM_REPO = getenv(
 
     "UPSTREAM_REPO",
 
-    "https://github.com/kaykay342121/Ddd",
+    "https://github.com/zuchzub/M",
 
 )
 
@@ -82,7 +82,7 @@ UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "main")
 
 # GIT TOKEN ( if your edited repo is private)
 
-GIT_TOKEN = getenv("GIT_TOKEN", None)
+GIT_TOKEN = getenv("GIT_TOKEN", "")
 
 # Only  Links formats are  accepted for this Var value.
 
@@ -136,7 +136,7 @@ TELEGRAM_DOWNLOAD_EDIT_SLEEP = int(getenv("TELEGRAM_EDIT_SLEEP", "5"))
 
 # Your Github Repo.. Will be shown on /start Command
 
-GITHUB_REPO = getenv("GITHUB_REPO", None) 
+GITHUB_REPO = getenv("GITHUB_REPO", "https://github.com/zuchzub/M") 
 
 # Spotify Client.. Get it from https://developer.spotify.com/dashboard
 
@@ -222,13 +222,18 @@ autoclean = []
 
 # Images
 
-START_IMG_URL = getenv("START_IMG_URL", None)
+START_IMG_URL = getenv(
+     "START_IMG_URL", 
+     "https://ibb.co/0jsDgHSj",
+
+
+)
 
 PING_IMG_URL = getenv(
 
     "PING_IMG_URL",
 
-    "assets/Ping.jpeg",
+    "https://ibb.co/0jsDgHSj",
 
 )
 
@@ -236,15 +241,14 @@ PLAYLIST_IMG_URL = getenv(
 
     "PLAYLIST_IMG_URL",
 
-    "assets/Playlist.jpeg",
-
+    "https://ibb.co/0jsDgHSj",
 )
 
 GLOBAL_IMG_URL = getenv(
 
     "GLOBAL_IMG_URL",
 
-    "assets/Global.jpeg",
+    "https://pbs.twimg.com/media/GlYNUMFWEAA4jEK?format=jpg&name=small",
 
 )
 
@@ -252,7 +256,7 @@ STATS_IMG_URL = getenv(
 
     "STATS_IMG_URL",
 
-    "assets/Stats.jpeg",
+    "https://pbs.twimg.com/media/GlYNUMFWEAA4jEK?format=jpg&name=small",
 
 )
 
@@ -260,7 +264,7 @@ TELEGRAM_AUDIO_URL = getenv(
 
     "TELEGRAM_AUDIO_URL",
 
-    "assets/Audio.jpeg",
+    "https://pbs.twimg.com/media/GlYNUMFWEAA4jEK?format=jpg&name=small",
 
 )
 
@@ -268,7 +272,7 @@ TELEGRAM_VIDEO_URL = getenv(
 
     "TELEGRAM_VIDEO_URL",
 
-    "assets/Video.jpeg",
+    "https://pbs.twimg.com/media/GlYNUMFWEAA4jEK?format=jpg&name=small",
 
 )
 
@@ -276,7 +280,7 @@ STREAM_IMG_URL = getenv(
 
     "STREAM_IMG_URL",
 
-    "assets/Stream.jpeg",
+    "https://pbs.twimg.com/media/GlYNUMFWEAA4jEK?format=jpg&name=small",
 
 )
 
@@ -284,7 +288,7 @@ SOUNCLOUD_IMG_URL = getenv(
 
     "SOUNCLOUD_IMG_URL",
 
-    "assets/Soundcloud.jpeg",
+    "https://pbs.twimg.com/media/GlYNUMFWEAA4jEK?format=jpg&name=small",
 
 )
 
@@ -292,7 +296,7 @@ YOUTUBE_IMG_URL = getenv(
 
     "YOUTUBE_IMG_URL",
 
-    "assets/Youtube.jpeg",
+    "https://pbs.twimg.com/media/GlYNUMFWEAA4jEK?format=jpg&name=small",
 
 )
 
@@ -300,7 +304,7 @@ SPOTIFY_ARTIST_IMG_URL = getenv(
 
     "SPOTIFY_ARTIST_IMG_URL",
 
-    "assets/SpotifyArtist.jpeg",
+    "https://pbs.twimg.com/media/GlYNUMFWEAA4jEK?format=jpg&name=small",
 
 )
 
@@ -308,7 +312,7 @@ SPOTIFY_ALBUM_IMG_URL = getenv(
 
     "SPOTIFY_ALBUM_IMG_URL",
 
-    "assets/SpotifyAlbum.jpeg",
+    "https://pbs.twimg.com/media/GlYNUMFWEAA4jEK?format=jpg&name=small",
 
 )
 
@@ -316,7 +320,7 @@ SPOTIFY_PLAYLIST_IMG_URL = getenv(
 
     "SPOTIFY_PLAYLIST_IMG_URL",
 
-    "assets/SpotifyPlaylist.jpeg",
+    "https://pbs.twimg.com/media/GlYNUMFWEAA4jEK?format=jpg&name=small",
 
 )
 
