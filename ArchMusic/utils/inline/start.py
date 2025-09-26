@@ -1,4 +1,3 @@
-#
 # Copyright (C) 2021-2023 by ArchBots@Github, < https://github.com/ArchBots >.
 #
 # This file is part of < https://github.com/ArchBots/ArchMusic > project,
@@ -31,10 +30,10 @@ def start_pannel(_):
         buttons.append(
             [
                 InlineKeyboardButton(
-                    text=_["S_B_4"], url=f"{SUPPORT_CHANNEL}"
+                    text=_["S_B_4"], url=f"https://t.me/the_team_kumsal"
                 ),
                 InlineKeyboardButton(
-                    text=_["S_B_3"], url=f"{SUPPORT_GROUP}"
+                    text=_["S_B_3"], url=f"https://t.me/the_team_kumsal"
                 ),
             ]
         )
@@ -43,7 +42,7 @@ def start_pannel(_):
             buttons.append(
                 [
                     InlineKeyboardButton(
-                        text=_["S_B_4"], url=f"{SUPPORT_CHANNEL}"
+                        text=_["S_B_4"], url=f"https://t.me/the_team_kumsal"
                     )
                 ]
             )
@@ -51,7 +50,7 @@ def start_pannel(_):
             buttons.append(
                 [
                     InlineKeyboardButton(
-                        text=_["S_B_3"], url=f"{SUPPORT_GROUP}"
+                        text=_["S_B_3"], url=f"https://t.me/the_team_kumsal"
                     )
                 ]
             )
@@ -70,10 +69,10 @@ def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
         buttons.append(
             [
                 InlineKeyboardButton(
-                    text=_["S_B_4"], url=f"{SUPPORT_CHANNEL}"
+                    text=_["S_B_4"], url=f"https://t.me/the_team_kumsal"
                 ),
                 InlineKeyboardButton(
-                    text=_["S_B_3"], url=f"{SUPPORT_GROUP}"
+                    text=_["S_B_3"], url=f"https://t.me/the_team_kumsal"
                 ),
             ]
         )
@@ -82,7 +81,7 @@ def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
             buttons.append(
                 [
                     InlineKeyboardButton(
-                        text=_["S_B_4"], url=f"{SUPPORT_CHANNEL}"
+                        text=_["S_B_4"], url=f"https://t.me/the_team_kumsal"
                     )
                 ]
             )
@@ -90,7 +89,7 @@ def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
             buttons.append(
                 [
                     InlineKeyboardButton(
-                        text=_["S_B_3"], url=f"{SUPPORT_GROUP}"
+                        text=_["S_B_3"], url=f"https://t.me/the_team_kumsal"
                     )
                 ]
             )
@@ -106,6 +105,9 @@ def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
         buttons.append(
             [
                 InlineKeyboardButton(text=_["S_B_7"], user_id=OWNER),
+                InlineKeyboardButton(
+                    text=_["S_B_6"], url=f"https://t.me/the_team_kumsal"
+                ),
             ]
         )
     else:
@@ -113,7 +115,7 @@ def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
             buttons.append(
                 [
                     InlineKeyboardButton(
-                        text=_["S_B_6"], url=f"https://github.com/ArchBots/ArchMusic"
+                        text=_["S_B_6"], url=f"https://t.me/the_team_kumsal"
                     ),
                 ]
             )
