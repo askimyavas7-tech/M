@@ -37,7 +37,7 @@ def stream_markup_timer(_, videoid, chat_id, played, dur):
     # Butonlar
     buttons = [
         [
-            InlineKeyboardButton("☔ Mavi duyuru ☔", url="https://t.me/the_team_kumsal")
+            InlineKeyboardButton("☔ Mavi duyuru ☔", url="https://t.me/maviduyuru")
         ],
         [
             InlineKeyboardButton(f"{played}  ⟪ {bar} ⟫  {dur}", callback_data="nonclickable")
