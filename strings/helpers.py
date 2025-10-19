@@ -1,219 +1,165 @@
-#
-# Copyright (C) 2021-2022 by TeamYukki@Github, < https://github.com/TeamYukki >.
-#
-# This file is part of < https://github.com/TeamYukki/YukkiMusicBot > project,
-# and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/TeamYukki/YukkiMusicBot/blob/master/LICENSE >
-#
-# All rights reserved.
-
 HELP_1 = """
-**✶ EETİKET KOMUTLARI**
-
-🏷️ /tag - Tek tek etiketler.
-
-🏷️ /utag - Çoklu etiketler.
-
-🏷️ /etag - Emoji ile etiketler.
-
-🏷️ /igtag - iyi geceler mesajları ile etiketler.
-
-🏷️ /guntag - günaydın mesajları ile etiketler.
-
-🏷️ /btag - Bayrak ile etiketler.
-
-🏷️ /sorutag - Sorularla etiketler.
-
-🏷️ /ktag - Karakter ile etiketler.
-
-🏷️ /stag - Sözlerle etiketler.
-
-🏷️ /stop - Etiket işlemini bitirir.
-
-🏷️ /chatmode - sohbet özelliğini açar.
-
-
-
-
+╭━━━❰ ✨ ᴇᴛɪᴋᴇᴛ ᴋᴏᴍᴜᴛʟᴀʀɪ ✨ ❱━━━╮
+🏷️ /tag         » Tek tek etiketler
+🏷️ /utag        » Çoklu etiketler
+🏷️ /etag        » Emoji ile etiketler
+🌙 /igtag       » İyi geceler mesajları ile
+🌞 /guntag      » Günaydın mesajları ile
+🚩 /btag        » Bayrak ile etiketler
+❓ /sorutag     » Sorularla etiketler
+🎭 /ktag        » Karakter ile etiketler
+💬 /stag        » Sözlerle etiketler
+⛔ /stop        » Etiket işlemini bitirir
+💬 /chatmode    » Sohbet özelliğini açar
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 """
-
 
 HELP_2 = """
-**🎰EĞLENCE KOMUTLARI**
-
-❤️‍🔥  **/eros **| eros**  –  Eros oku atar.**
-
-📝  **/burc  –  Burçlarınızı yorumlarım.**
-
-✨ **/mani  –  Mani söylerim.
-
-👋  **/slap  –  Birini tokatlayın.**
-
-🎲  **/zar  –  Rastgele bir zar atın.**
-
-🎯  **/dart  –  Dart atar.**
-
-🎰  **/slot  –  Şans slot'u çevirir.**
-
-⚽️  **/futbol  –  Kaleye top atar.**
-
-🎳  **/bowling  –  Bowling atar.**
-
-🪙  **/para  –  Rastgele bir para atın.**
-
-👋  **/slap  –  Birini tokatlayın.**
-
-🤣  **/saka  –  Rastgele bir şaka gönderin.**
-
-📜  **/soz  –  Rastgele bir söz gönderin.** 
-
-📢  **/tts  –  Bir metni sese çevirir.**
-
+╭━━━❰ 🎉 ᴇğʟᴇɴᴄᴇ ᴋᴏᴍᴜᴛʟᴀʀɪ 🎰 ❱━━━╮
+❤️‍🔥 /eros      » Eros oku atar
+📝 /burc       » Burçlarınızı yorumlar
+✨ /mani       » Mani söyler
+👋 /slap       » Birini tokatlayın
+🎲 /zar        » Rastgele zar atın
+🎯 /dart       » Dart atar
+🎰 /slot       » Şans slotu çevirir
+⚽️ /futbol    » Kaleye top atar
+🎳 /bowling   » Bowling atar
+🪙 /para       » Rastgele para atın
+🤣 /saka       » Rastgele şaka gönderin
+📜 /soz       » Rastgele söz gönderin
+📢 /tts       » Metni sese çevirir
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 """
-
 
 HELP_3 = """
-**ADMİN KOMUTLARI:**
-
-**/c** komutlarını kanalda kullanabilmek için, komutların başına **c** ekleyin.
-
-**/pause veya /dur**: Çalan akışı duraklatır.
-**/resume veya /devam**: Duraklatılmış akışı devam ettirir.
-**/skip veya /atla **: Çalan akışı atlar ve sıradaki parçayı çalmaya başlar.
-**/kapat** veya **/son**: Sıradaki parçayı atlar ve çalan akışı sonlandırır.
-**/player**: Etkileşimli bir oynatıcı paneli alır.
-**/queue veya /liste**: Sıradaki parçaların listesini gösterir.
+╭━━━❰ 🔧 ᴀᴅᴍɪɴ ᴋᴏᴍᴜᴛʟᴀʀɪ 🔧 ❱━━━╮
+/pause veya /dur        » Çalan akışı duraklatır
+/resume veya /devam     » Duraklatılmış akışı devam ettirir
+/skip veya /atla        » Çalan parçayı atlar
+/kapat veya /son        » Çalan yayını sonlandırır
+/player                  » Etkileşimli oynatıcı paneli alır
+/queue veya /liste      » Sıradaki parçaları gösterir
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 """
+
 HELP_4 = """
-**YETKİLİ KULLANICILAR:**
-
-**/auth veya /ver  [kullanıcı adı/kullanıcı_ID]**: Bir kullanıcıyı botun yetkili listesine ekler.
-**/unauth veya /al [kullanıcı adı/kullanıcı_ID]**: Bir kullanıcıyı yetkili kullanıcılar listesinden çıkarır.
-**/authusers veya /yetkili**: Yetkili kullanıcıların listesini gösterir.
+╭━━━❰ 🛡️ ʏᴇᴛᴋɪʟɪ ᴋᴏᴍᴜᴛʟᴀʀ 🧠 ❱━━━╮
+✅ **/auth** – Kullanıcıya yetki verir.  
+❌ **/unauth** – Yetkiyi kaldırır.  
+📋 **/authusers** – Yetkili kullanıcı listesini gösterir.  
+🎧 **/aktifses** – Aktif sesli sohbetleri gösterir.  
+🎥 **/aktifvideo** – Aktif video sohbetleri gösterir.  
+💬 **/admincache** – Yönetici önbelleğini yeniler.  
+╰━━━━━━━━━━━━━━━━━━━━━━━━╯
 """
+
+
 HELP_5 = """
-**BAKIM MODU:** [Sadece süper yöneticiler için]
-
-/logs : Botun aktivitelerinin günlüklerini alır. 📔
-
-/logger [enable/disable] : Botun aktivitelerini günlüklemeye başlar/devre dışı bırakır.📝
-
-/bakım [enable/disable] : Botun bakım modunu etkinleştirir/devre dışı bırakır. ⚙️
-
-**SUDO KULLANICISI EKLE**
-
-/addsudo : Kullanıcı ekler.
-/delsudo : Kullanıcı siler.
-/sudolist : Kullanıcı listesi
-
-**AKTIF SES KONTROL**
-
-/aktifses : Aktif ses kontrol
-/aktifvideo : Aktif video kontrol
-
-
+╭━━━❰ ⚙️ ʙᴀᴋɪᴍ ᴍᴏᴅᴜ ⚙️ ❱━━━╮
+/logs                           » Bot aktivitelerinin günlüklerini alır
+/logger [enable/disable]        » Günlüklemeyi açar/kapatır
+/bakım [enable/disable]         » Bakım modunu açar/kapatır
+/addsudo                        » Sudo kullanıcı ekler
+/delsudo                        » Sudo kullanıcı siler
+/sudolist                        » Sudo kullanıcı listesini gösterir
+/aktifses                       » Aktif ses kontrolü
+/aktifvideo                     » Aktif video kontrolü
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 """
+
 HELP_6 = """
-**CHAT BLACKLIST ÖZELLİĞİ:** [Sadece süper yöneticiler için]
-
-Çöp sohbetlerinizi botumuzda kullanmayı kısıtlayın.
-
-/blacklistchat [sohbet ID] : Bir sohbeti bot kullanımından engeller.
-/whitelistchat [sohbet ID] : Kara listeye alınmış sohbeti beyaz listeye alır.
-/blacklistedchat : Kara listeye alınmış sohbetlerin listesini gösterir.
+╭━━━❰ 🚫 ᴄʜᴀᴛ ʙʟᴀᴄᴋʟɪsᴛ 🚫 ❱━━━╮
+/blacklistchat [sohbet ID]       » Sohbeti bot kullanımından engeller
+/whitelistchat [sohbet ID]       » Kara listedeki sohbeti açar
+/blacklistedchat                 » Kara listeyi gösterir
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 """
+
 HELP_7 = """
-**KULLANICI ENGELLEME:**
-
-Kara listeye alınmış kullanıcıları görmezden gelmeye başlar, böylece bot komutlarını kullanamazlar.
-
-/block [kullanıcı adı veya kullanıcıya yanıt] : Kullanıcıyı botumuzdan engeller.
-/unblock [kullanıcı adı veya kullanıcıya yanıt] : Engellenmiş kullanıcının engelini kaldırır.
-/blockedusers : Engellenmiş kullanıcıların listesini gösterir.
+╭━━━❰ ❌ ᴋᴜʟʟᴀɴɪᴄɪ ᴇɴɢᴇʟʟᴇᴍᴇ ❌ ❱━━━╮
+/block [kullanıcı]      » Kullanıcıyı bottan engeller
+/unblock [kullanıcı]    » Engeli kaldırır
+/blockedusers           » Engellenen kullanıcıları gösterir
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 """
+
 HELP_8 = """
-**KANAL OYNATMA KOMUTLARI:**
-
-Kanallarda ses/video yayını yapabilirsiniz.
-
-/cplay : Kanalın video sohbetinde istenilen ses parçasının yayınını başlatır.
-/cvoynat : Kanalın video sohbetinde istenilen video parçasının yayınını başlatır.
-/cplayforce veya /cvplayforce : Devam eden yayını durdurur ve istenilen parçanın yayınını başlatır.
-/channelplay [sohbet kullanıcı adı veya ID] veya [devre dışı] : Kanalı bir gruba bağlar ve grup tarafından gönderilen komutlarla parçaların yayınını başlatır.
+╭━━━❰ 📺 ᴋᴀɴᴀʟ ᴏʏɴᴀᴛᴍᴀ 📺 ❱━━━╮
+/cplay                  » Kanal video sohbetinde ses çalar
+/cvoynat                » Kanal video sohbetinde video çalar
+/cplayforce veya /cvplayforce » Mevcut yayını durdurur ve çalar
+/channelplay [sohbet]   » Kanalı gruba bağlar ve çalmaya başlar
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 """
 
 HELP_9 = """
-**GLOBAL BAN ÖZELLİĞİ:** [Sadece süper yöneticiler için]
-
-/gban [kullanıcı adı veya kullanıcıya yanıt] : Tüüm sunucu sohbetlerinden kullanıcıyı global olarak engeller ve bot kullanımını ondan engeller.
-/ungban [kullanıcı adı veya kullanıcıya yanıt] : Global olarak yasaklanan kullanıcının yasağını kaldırır.
-/gbannedusers : Global olarak yasaklanan kullanıcıların listesini gösterir.
+╭━━━❰ 🌐 ɢʟᴏʙᴀʟ ʙᴀɴ 🌐 ❱━━━╮
+/gban [kullanıcı]        » Tüm sunucularda engeller
+/ungban [kullanıcı]      » Global yasağı kaldırır
+/gbannedusers             » Global olarak yasaklananları gösterir
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 """
+
 HELP_10 = """
-**LOOP STREAM:**
-
-Ongoing yayını döngüde başlatır.
-
-/dongu [enable/disable] : Ongoing yayın için döngüyü etkinleştirir/devre dışı bırakır.
-/dongu [1, 2, 3, ...] : Verilen değer için döngüyü etkinleştirir.
+╭━━━❰ 🔁 ʟᴏᴏᴘ sᴛʀᴇᴀᴍ 🔁 ❱━━━╮
+/dongu [enable/disable]   » Yayını döngüye alır/kapatır
+/dongu [1,2,3,...]        » Verilen değer için döngü etkinleştirir
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 """
+
 HELP_11 = """
-**YAYIN YAPMA ÖZELLİĞİ**
+╭━━━❰ 📢 ʏᴀʏɪɴ ʏᴀᴘᴍᴀ 📢 ❱━━━╮
+/broadcast [mesaj]         » Sunucu sohbetlerine mesaj yayınlar
 
-**/broadcast [mesaj veya bir mesaja yanıt]**: Bir mesajı sunucu sohbetlerine yayınlar.
-
-Yayın modları:
-**-pin**: Yayınlanan mesajları sunucu sohbetlerinde sabitler.
-**-pinloud**: Yayınlanan mesajları sunucu sohbetlerinde sabitler ve üyelere bildirim gönderir.
-**-user**: Mesajı botunuza başlatan kullanıcılara yayınlar.
-**-assistant**: Botunuzun asistan hesabından mesajı yayınlar.
-**-nobot**: Mesajın yayınlanmasını engeller.
-
-Örnek: /broadcast -user -assistant -pin Test yayını
+Modlar:
+-pin           » Mesajları sabitler
+-pinloud      » Sabitler + üyelere bildirir
+-user          » Başlatan kullanıcılara gönderir
+-assistant     » Bot asistan hesabından gönderir
+-nobot         » Yayını engeller
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 """
+
 HELP_12 = """
-**PING & STATS:**
-
-/ping : Botun ping ve sistem istatistiklerini gösterir.
-
-/stats : Botun genel istatistiklerini gösterir.
+╭━━━❰ ⚡ PING & STATS ⚡ ❱━━━╮
+/ping     » Botun ping ve sistem istatistiklerini gösterir
+/stats    » Botun genel istatistiklerini gösterir
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 """
+
 HELP_13 = """
-**PLAY COMMANDS:**
-
-**v :** Video play için kullanılır.
-**force :** Zorla oynatma için kullanılır.
-
-/play , /voynat veya /oynat veya /voynat : Video sohbetinde istenilen parçayı çalmaya başlar.
-
-/playforce veya /voynatforce : Devam eden yayını durdurur ve istenilen parçayı çalmaya başlar.
-
-/playlist : Oynatma listenizi gösterir.
-/listemisil : Oynatma listenizi siler.
+╭━━━❰ ▶️ PLAY COMMANDS ▶️ ❱━━━╮
+/play veya /oynat          » Video sohbetinde çalmaya başlar
+/playforce veya /oynatforce» Devam eden yayını durdurur ve çalar
+/playlist                   » Oynatma listesini gösterir
+/listemisil                 » Oynatma listesini siler
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 """
-HELP_14 = """
-**SHUFFLE QUEUE:**
 
-/karistir : Sıradaki parçaları karıştırır.
-/queue : Karıştırılmış sırayı gösterir.
+HELP_14 = """
+╭━━━❰ 🔀 SHUFFLE QUEUE 🔀 ❱━━━╮
+/karistir     » Sıradaki parçaları karıştırır
+/queue        » Karıştırılmış sırayı gösterir
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 """
 
 HELP_15 = """
-**SEEK STREAM:**
-
-/ilerisar [saniye cinsinden süre] : Yayını belirtilen süreye atlar.
-/gerisar [saniye cinsinden süre] : Yayını belirtilen süre kadar geri alır.
+╭━━━❰ ⏩ SEEK STREAM ⏪ ❱━━━╮
+/ilerisar [saniye]    » Yayını belirtilen süreye atlar
+/gerisar [saniye]     » Yayını belirtilen süre kadar geri alır
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 """
+
 HELP_16 = """
-**SONG DOWNLOAD:**
-
-/song veya /bul [şarkı adı/YouTube URL] : YouTube'dan herhangi bir parçayı MP3 veya MP4 formatında indirir.
+╭━━━❰ 🎵 SONG DOWNLOAD 🎵 ❱━━━╮
+/song veya /bul [şarkı/URL] » YouTube'dan MP3/MP4 indirir
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 """
+
 HELP_17 = """
-**SPEED COMMANDS:**
-
-Ongoing stream'un çalma hızını kontrol edebilirsiniz. [Yalnızca yöneticiler]
-
-/speed veya /playback : Grubun ses çalma hızını ayarlamak için.
-/cspeed veya /cplayback : Kanalın ses çalma hızını ayarlamak için.
+╭━━━❰ ⚡ SPEED COMMANDS ⚡ ❱━━━╮
+/speed veya /playback      » Ses çalma hızını ayarlar (grup)
+/cspeed veya /cplayback    » Ses çalma hızını ayarlar (kanal)
+╰━━━━━━━━━━━━━━━━━━━━━━━━━━╯
 """
