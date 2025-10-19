@@ -224,7 +224,8 @@ autoclean = []
 
 START_IMG_URL = getenv(
      "START_IMG_URL", 
-     "https://ibb.co/0jsDgHSj",
+   
+"https://files.catbox.moe/ifurgl.jpg",
 
 
 )
@@ -233,7 +234,7 @@ PING_IMG_URL = getenv(
 
     "PING_IMG_URL",
 
-    "https://ibb.co/0jsDgHSj",
+    "https://files.catbox.moe/ifurgl.jpg",
 
 )
 
