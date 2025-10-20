@@ -1,13 +1,3 @@
-#
-# Copyright (C) 2021-2023 by ArchBots@Github, < https://github.com/ArchBots >.
-#
-# This file is part of < https://github.com/ArchBots/ArchMusic > project,
-# and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/ArchBots/ArchMusic/blob/master/LICENSE >
-#
-# All rights reserved.
-#
-
 import os
 from random import randint
 from typing import Union
@@ -73,11 +63,19 @@ async def stream(
                 continue
             if duration_sec > config.DURATION_LIMIT:
                 continue
+            
+            # --- PLAYLIST İÇİ AKTİF SOHBET İÇİN DİREKT AKIŞ URL'Sİ KULLANIMI ---
+            # Kuyruğa eklerken dosya yolu yerine stream URL'sini almalıyız
+            n, stream_url = await YouTube.video(vidid, True) # True: stream_only
+            if n == 0:
+                 # Eğer akış URL'si alınamazsa, bu parçayı atla
+                 continue
+
             if await is_active_chat(chat_id):
                 await put_queue(
                     chat_id,
                     original_chat_id,
-                    f"vid_{vidid}",
+                    stream_url, # <-- GÜNCELLENDİ: f"vid_{vidid}" yerine URL
                     title,
                     duration_min,
                     user_name,
@@ -93,19 +91,16 @@ async def stream(
                 if not forceplay:
                     db[chat_id] = []
                 status = True if video else None
-                try:
-                    file_path, direct = await YouTube.download(
-                        vidid, mystic, video=status, videoid=True
-                    )
-                except:
-                    raise AssistantErr(_["play_16"])
+                
+                # --- İLK ÇALIŞTIRMA (PLAYLIST İÇİ) ---
+                # İndirme satırları kaldırıldı. Doğrudan stream_url kullanılıyor.
                 await ArchMusic.join_call(
-                    chat_id, original_chat_id, file_path, video=status
+                    chat_id, original_chat_id, stream_url, video=status # <-- GÜNCELLENDİ: stream_url kullanıldı
                 )
                 await put_queue(
                     chat_id,
                     original_chat_id,
-                    file_path if direct else f"vid_{vidid}",
+                    stream_url, # <-- GÜNCELLENDİ: Dosya yolu yerine URL
                     title,
                     duration_min,
                     user_name,
@@ -124,7 +119,8 @@ async def stream(
                     duration_min,
                     user_name
                 ),
-                )
+                reply_markup=InlineKeyboardMarkup(button),
+            )
                 db[chat_id][0]["mystic"] = run
                 db[chat_id][0]["markup"] = "stream"
         if count == 0:
@@ -151,17 +147,25 @@ async def stream(
         title = (result["title"]).title()
         duration_min = result["duration_min"]
         status = True if video else None
-        try:
-            file_path, direct = await YouTube.download(
-                vidid, mystic, videoid=True, video=status
-            )
-        except:
-            raise AssistantErr(_["play_16"])
+        
+        # --- YOUTUBE DOĞRUDAN AKIŞ URL'SİNİ AL ---
+        n, stream_url = await YouTube.video(vidid, True) # True: stream_only
+        if n == 0:
+            raise AssistantErr(_["str_3"]) # Hata mesajını güncelleyin: "Doğrudan akış URL'si alınamadı"
+        
+        # Kaldırılan Kod (İndirme):
+        # try:
+        #     file_path, direct = await YouTube.download(
+        #         vidid, mystic, videoid=True, video=status
+        #     )
+        # except:
+        #     raise AssistantErr(_["play_16"])
+
         if await is_active_chat(chat_id):
             await put_queue(
                 chat_id,
                 original_chat_id,
-                file_path if direct else f"vid_{vidid}",
+                stream_url, # <-- GÜNCELLENDİ: Dosya yolu/vid_id yerine URL
                 title,
                 duration_min,
                 user_name,
@@ -179,13 +183,15 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
+            
+            # --- İLK ÇALIŞTIRMA (YOUTUBE) ---
             await ArchMusic.join_call(
-                chat_id, original_chat_id, file_path, video=status
+                chat_id, original_chat_id, stream_url, video=status # <-- GÜNCELLENDİ: Dosya yolu yerine URL
             )
             await put_queue(
                 chat_id,
                 original_chat_id,
-                file_path if direct else f"vid_{vidid}",
+                stream_url, # <-- GÜNCELLENDİ: Dosya yolu/vid_id yerine URL
                 title,
                 duration_min,
                 user_name,
@@ -204,6 +210,7 @@ async def stream(
                     duration_min,
                     user_name
                 ),
+                reply_markup=InlineKeyboardMarkup(button),
             )
             db[chat_id][0]["mystic"] = run
             db[chat_id][0]["markup"] = "stream"
@@ -254,6 +261,7 @@ async def stream(
                 text=_["stream_3"].format(
                     title, duration_min, user_name
                 ),
+                reply_markup=InlineKeyboardMarkup(button),
             )
             db[chat_id][0]["mystic"] = run
             db[chat_id][0]["markup"] = "tg"
@@ -308,6 +316,7 @@ async def stream(
                 text=_["stream_4"].format(
                     title, link, duration_min, user_name
                 ),
+                reply_markup=InlineKeyboardMarkup(button),
             )
             db[chat_id][0]["mystic"] = run
             db[chat_id][0]["markup"] = "tg"
@@ -339,11 +348,12 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            n, file_path = await YouTube.video(link)
+            # Live yayınlar zaten doğrudan akış URL'si kullanır. file_path artık stream_url'dir.
+            n, stream_url = await YouTube.video(link) # <-- stream_url'i alıyoruz
             if n == 0:
                 raise AssistantErr(_["str_3"])
             await ArchMusic.join_call(
-                chat_id, original_chat_id, file_path, video=status
+                chat_id, original_chat_id, stream_url, video=status # <-- GÜNCELLENDİ: stream_url kullanıldı
             )
             await put_queue(
                 chat_id,
@@ -367,7 +377,7 @@ async def stream(
                     duration_min,
                     user_name
                 ),
-                
+                reply_markup=InlineKeyboardMarkup(button),
             )
             db[chat_id][0]["mystic"] = run
             db[chat_id][0]["markup"] = "tg"
@@ -421,7 +431,7 @@ async def stream(
                     duration_min,
                     user_name
                 ),
-                
+                reply_markup=InlineKeyboardMarkup(button),
             )
                 
             db[chat_id][0]["mystic"] = run
