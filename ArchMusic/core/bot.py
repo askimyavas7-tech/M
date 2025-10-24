@@ -43,4 +43,7 @@ class ArchMusicBot:
         await self.app.stop()
 
     def run(self):
-        asyncio.get_event_loop().run_until_complete(self._amain())
+        try:
+            asyncio.run(self._amain())
+        except KeyboardInterrupt:
+            pass
