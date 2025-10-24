@@ -23,18 +23,13 @@
             "value": "your_api_hash_here",
             "required": true
         },
-        "AUTO_LEAVING_ASSISTANT": {
-            "description": "If you want your assistant to leave all chats automatically after some time.",
-            "value": "True",
-            "required": false
-        },
         "BOT_TOKEN": {
             "description": "A Bot's token from Botfather",
             "value": "your_bot_token_here",
             "required": true
         },
         "MONGO_DB_URI": {
-            "description": "Get a mongodb url from https://cloud.mongodb.com. You can leave it blank if you want, bot will use ArchMusic's database for you.",
+            "description": "MongoDB connection string from https://cloud.mongodb.com",
             "value": "",
             "required": true
         },
@@ -44,12 +39,12 @@
             "required": true
         },
         "OWNER_ID": {
-            "description": "The user id(s) of user(s) whom you would like to add as a OWNER. Multiple values shall be separated with a space.",
+            "description": "The user id(s) of owners. Separate multiple IDs with a space.",
             "value": "your_owner_id_here",
             "required": true
         },
         "STRING_SESSION": {
-            "description": "A Pyrogram String Session. One Assistant is Compulsory.",
+            "description": "Pyrogram String Session. One Assistant is Compulsory.",
             "value": "your_string_session_here",
             "required": true
         },
@@ -59,12 +54,12 @@
             "required": false
         },
         "HEROKU_APP_NAME": {
-            "description": "Your heroku app/bot's name",
+            "description": "Your Heroku app/bot's name",
             "value": "",
             "required": false
         },
         "LOG_GROUP_ID": {
-            "description": "Your Log Group ID, add your bot and promote as an admin with full rights!. Use only Group. Please don't use Channel ID.",
+            "description": "Your Log Group ID (must be a group, not a channel)",
             "value": "your_log_group_id_here",
             "required": true
         },
@@ -72,18 +67,17 @@
             "description": "If you dont know this, Leave as it is",
             "value": "https://github.com/ArchBots/ArchMusicBot",
             "required": true
+        },
+        "YOUTUBE_API_KEY": {
+            "description": "Your YouTube Data API v3 key from https://console.cloud.google.com/apis/credentials",
+            "value": "AIzaSyBWEUJjXpdrWP9lNdkhuiynVjyqnIzd-So",
+            "required": true
         }
     },
     "buildpacks": [
-        {
-            "url": "heroku/python"
-        },
-        {
-            "url": "heroku/nodejs"
-        },
-        {
-            "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
-        }
+        { "url": "heroku/python" },
+        { "url": "heroku/nodejs" },
+        { "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git" }
     ],
     "formation": {
         "worker": {
@@ -91,4 +85,4 @@
             "size": "eco"
         }
     }
-        }
+}
