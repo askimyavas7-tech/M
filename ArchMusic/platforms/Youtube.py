@@ -87,7 +87,8 @@ class YouTubeAPI:
             link = self.base + link
         if "&" in link:
             link = link.split("&")[0]
-        results = VideosSearch(link, limit=1)
+        results = VideosSearch(query, limit=10, api_key=config.YOUTUBE_API_KEY) # API key integration applied
+# VideosSearch(link, limit=1)
         for result in (await results.next())["result"]:
             title = result["title"]
             duration_min = result["duration"]
@@ -104,7 +105,8 @@ class YouTubeAPI:
             link = self.base + link
         if "&" in link:
             link = link.split("&")[0]
-        results = VideosSearch(link, limit=1)
+        results = VideosSearch(query, limit=10, api_key=config.YOUTUBE_API_KEY) # API key integration applied
+# VideosSearch(link, limit=1)
         for result in (await results.next())["result"]:
             title = result["title"]
         return title
@@ -114,7 +116,8 @@ class YouTubeAPI:
             link = self.base + link
         if "&" in link:
             link = link.split("&")[0]
-        results = VideosSearch(link, limit=1)
+        results = VideosSearch(query, limit=10, api_key=config.YOUTUBE_API_KEY) # API key integration applied
+# VideosSearch(link, limit=1)
         for result in (await results.next())["result"]:
             duration = result["duration"]
         return duration
@@ -124,7 +127,8 @@ class YouTubeAPI:
             link = self.base + link
         if "&" in link:
             link = link.split("&")[0]
-        results = VideosSearch(link, limit=1)
+        results = VideosSearch(query, limit=10, api_key=config.YOUTUBE_API_KEY) # API key integration applied
+# VideosSearch(link, limit=1)
         for result in (await results.next())["result"]:
             thumbnail = result["thumbnails"][0]["url"].split("?")[0]
         return thumbnail
@@ -173,7 +177,8 @@ class YouTubeAPI:
             link = self.base + link
         if "&" in link:
             link = link.split("&")[0]
-        results = VideosSearch(link, limit=1)
+        results = VideosSearch(query, limit=10, api_key=config.YOUTUBE_API_KEY) # API key integration applied
+# VideosSearch(link, limit=1)
         for result in (await results.next())["result"]:
             title = result["title"]
             duration_min = result["duration"]
@@ -237,7 +242,8 @@ class YouTubeAPI:
             link = self.base + link
         if "&" in link:
             link = link.split("&")[0]
-        a = VideosSearch(link, limit=10)
+        a = VideosSearch(query, limit=10, api_key=config.YOUTUBE_API_KEY) # API key integration applied
+# VideosSearch(link, limit=10)
         result = (await a.next()).get("result")
         title = result[query_type]["title"]
         duration_min = result[query_type]["duration"]
