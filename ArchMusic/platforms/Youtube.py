@@ -1,8 +1,6 @@
 # Copyright (C) 2025 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
 # Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
 
-
-
 import asyncio
 import os
 import re
@@ -18,14 +16,8 @@ import config
 from ArchMusic.utils.database import is_on_off
 from ArchMusic.utils.formatters import time_to_seconds
 
-
-def cookiefile():
-    cookie_dir = "cookies"
-    cookies_files = [f for f in os.listdir(cookie_dir) if f.endswith(".txt")]
-
     cookie_file = os.path.join(cookie_dir, cookies_files[0])
     return cookie_file
-
 
 async def shell_cmd(cmd):
     proc = await asyncio.create_subprocess_shell(
@@ -40,7 +32,6 @@ async def shell_cmd(cmd):
         else:
             return errorz.decode("utf-8")
     return out.decode("utf-8")
-
 
 class YouTubeAPI:
     def __init__(self):
@@ -87,8 +78,7 @@ class YouTubeAPI:
             link = self.base + link
         if "&" in link:
             link = link.split("&")[0]
-        results = VideosSearch(query, limit=10, api_key=config.YOUTUBE_API_KEY) # API key integration applied
-# VideosSearch(link, limit=1)
+        results = VideosSearch(link, limit=1, api_key=config.YOUTUBE_API_KEY)
         for result in (await results.next())["result"]:
             title = result["title"]
             duration_min = result["duration"]
@@ -105,8 +95,7 @@ class YouTubeAPI:
             link = self.base + link
         if "&" in link:
             link = link.split("&")[0]
-        results = VideosSearch(query, limit=10, api_key=config.YOUTUBE_API_KEY) # API key integration applied
-# VideosSearch(link, limit=1)
+        results = VideosSearch(link, limit=1, api_key=config.YOUTUBE_API_KEY)
         for result in (await results.next())["result"]:
             title = result["title"]
         return title
@@ -116,8 +105,7 @@ class YouTubeAPI:
             link = self.base + link
         if "&" in link:
             link = link.split("&")[0]
-        results = VideosSearch(query, limit=10, api_key=config.YOUTUBE_API_KEY) # API key integration applied
-# VideosSearch(link, limit=1)
+        results = VideosSearch(link, limit=1, api_key=config.YOUTUBE_API_KEY)
         for result in (await results.next())["result"]:
             duration = result["duration"]
         return duration
@@ -127,8 +115,7 @@ class YouTubeAPI:
             link = self.base + link
         if "&" in link:
             link = link.split("&")[0]
-        results = VideosSearch(query, limit=10, api_key=config.YOUTUBE_API_KEY) # API key integration applied
-# VideosSearch(link, limit=1)
+        results = VideosSearch(link, limit=1, api_key=config.YOUTUBE_API_KEY)
         for result in (await results.next())["result"]:
             thumbnail = result["thumbnails"][0]["url"].split("?")[0]
         return thumbnail
@@ -140,9 +127,7 @@ class YouTubeAPI:
             link = link.split("&")[0]
         proc = await asyncio.create_subprocess_exec(
             "yt-dlp",
-            "--cookies",
-            cookiefile(),
-            "-g",
+                        "-g",
             "-f",
             "best[height<=?720][width<=?1280]",
             f"{link}",
@@ -177,8 +162,7 @@ class YouTubeAPI:
             link = self.base + link
         if "&" in link:
             link = link.split("&")[0]
-        results = VideosSearch(query, limit=10, api_key=config.YOUTUBE_API_KEY) # API key integration applied
-# VideosSearch(link, limit=1)
+        results = VideosSearch(link, limit=1, api_key=config.YOUTUBE_API_KEY)
         for result in (await results.next())["result"]:
             title = result["title"]
             duration_min = result["duration"]
@@ -191,7 +175,6 @@ class YouTubeAPI:
             "vidid": vidid,
             "duration_min": duration_min,
             "thumb": thumbnail,
-            "cookiefile": cookiefile(),
         }
         return track_details, vidid
 
@@ -227,7 +210,6 @@ class YouTubeAPI:
                             "ext": format["ext"],
                             "format_note": format["format_note"],
                             "yturl": link,
-                            "cookiefile": cookiefile(),
                         }
                     )
         return formats_available, link
@@ -242,8 +224,7 @@ class YouTubeAPI:
             link = self.base + link
         if "&" in link:
             link = link.split("&")[0]
-        a = VideosSearch(query, limit=10, api_key=config.YOUTUBE_API_KEY) # API key integration applied
-# VideosSearch(link, limit=10)
+        a = VideosSearch(link, limit=10, api_key=config.YOUTUBE_API_KEY)
         result = (await a.next()).get("result")
         title = result[query_type]["title"]
         duration_min = result[query_type]["duration"]
@@ -268,10 +249,10 @@ class YouTubeAPI:
 
         def audio_dl():
             ydl_optssx = {
-                "cookiefile": cookiefile(),
                 "format": "bestaudio/best",
                 "outtmpl": "downloads/%(id)s.%(ext)s",
                 "geo_bypass": True,
+                "youtube_api_key": config.YOUTUBE_API_KEY,  # Added API Key
                 "nocheckcertificate": True,
                 "quiet": True,
                 "no_warnings": True,
@@ -286,10 +267,10 @@ class YouTubeAPI:
 
         def video_dl():
             ydl_optssx = {
-                "cookiefile": cookiefile(),
                 "format": "(best[height<=?720][width<=?1280])",
                 "outtmpl": "downloads/%(id)s.%(ext)s",
                 "geo_bypass": True,
+                "youtube_api_key": config.YOUTUBE_API_KEY,  # Added API Key
                 "nocheckcertificate": True,
                 "quiet": True,
                 "no_warnings": True,
@@ -309,10 +290,10 @@ class YouTubeAPI:
                 "format": formats,
                 "outtmpl": fpath,
                 "geo_bypass": True,
+                "youtube_api_key": config.YOUTUBE_API_KEY,  # Added API Key
                 "nocheckcertificate": True,
                 "quiet": True,
                 "no_warnings": True,
-                "cookiefile": cookiefile(),
                 "prefer_ffmpeg": True,
                 "merge_output_format": "mp4",
             }
@@ -325,10 +306,10 @@ class YouTubeAPI:
                 "format": format_id,
                 "outtmpl": fpath,
                 "geo_bypass": True,
+                "youtube_api_key": config.YOUTUBE_API_KEY,  # Added API Key
                 "nocheckcertificate": True,
                 "quiet": True,
                 "no_warnings": True,
-                "cookiefile": cookiefile(),
                 "prefer_ffmpeg": True,
                 "postprocessors": [
                     {
@@ -356,9 +337,7 @@ class YouTubeAPI:
             else:
                 proc = await asyncio.create_subprocess_exec(
                     "yt-dlp",
-                    "--cookies",
-                    cookiefile(),
-                    "-g",
+                                        "-g",
                     "-f",
                     "best[height<=?720][width<=?1280]",
                     f"{link}",
