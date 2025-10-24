@@ -1,120 +1,46 @@
-import sys
+import os, asyncio
+from pyrogram import Client, idle
+from ArchMusic.core.logger import setup_logging
+from ArchMusic.core.dir import ensure_directories
+from ArchMusic.core.misc import init_database, load_sudoers
+from ArchMusic.core.git import fetch_updates
+from ArchMusic.core.call import CallManager
 
-from pyrogram import Client
-from pyrogram.enums import ChatMemberStatus
-from pyrogram.types import BotCommand, BotCommandScopeAllPrivateChats, BotCommandScopeAllGroupChats
-
-import config
-
-from ..logging import LOGGER
-
-
-private_commands = [
-    BotCommand("start", "🎧 Botu başlatır"),
-    BotCommand("yardim", "📖 Yardım menüsünü gösterir"),
-]
-
-
-group_commands = [
-    # 🔹 Müzik Komutları
-    BotCommand("oynat", "🔼 Müziği oynatır"),
-    BotCommand("voynat", "📹 Videoyu oynatır"),
-    BotCommand("atla", "⏭️ Sonraki Parçaya Geçer"),
-    BotCommand("duraklat", "⏸️ Çalan Parçayı Durdurur"),
-    BotCommand("devam", "▶️ Çalan Parçayı Devam Ettirir"),
-    BotCommand("son", "⏹️ Çalan Parçayı Kapatır"),
-    BotCommand("karistir", "🔀 Çalan Parçayı Karıştırır"),
-    BotCommand("dongu", "🔄 Çalan Parçayı Tekrarlar"),
-    BotCommand("sira", "📖 Çalma Listelerini Gösterir"),
-    BotCommand("ilerisar", "⏩ Parçayı İleri Sarar"),
-    BotCommand("gerisar", "⏪ Parçayı Geri Sarar"),
-    BotCommand("playlist", "📖 Çalma Listenizi Gösterir"),
-    BotCommand("bul", "📩 Seçtiğiniz Parçayı İndirir"),
-    BotCommand("tag", "👤 Tek tek etiketler"),
-    BotCommand("atag", "👮 Gruptaki adminleri etiketler"),
-    BotCommand("utag", "👥 Çoklu etiketler"),
-    BotCommand("etag", "😊 Emoji ile etiketler"),
-    BotCommand("igtag", "🌙 İyi geceler mesajları ile etiketler"),
-    BotCommand("guntag", "🌞 Günaydın mesajları ile etiketler"),
-    BotCommand("btag", "🚩 Bayrak ile etiketler"),
-    BotCommand("sorutag", "❓ Sorularla etiketler"),
-    BotCommand("ktag", "🎭 Karakter ile etiketler"),
-    BotCommand("stag", "💬 Sözlerle etiketler"),
-    BotCommand("eros", "🏹 Eros oku atar"),
-    BotCommand("burc", "🔮 Burcunuzu yorumlar"),
-    BotCommand("mani", "🎶 Mani söyler"),
-    BotCommand("slap", "🖐️ Birini tokatlar"),
-    BotCommand("zar", "🎲 Rastgele zar atar"),
-    BotCommand("dart", "🎯 Dart atar"),
-    BotCommand("cash", "🎰 Şans slotu çevirir"),
-    BotCommand("fcash", "⚽ Kaleye top atar"),
-    BotCommand("bcash", "🏀 Basket atar"),
-    BotCommand("bowling", "🎳 Bowling atar"),
-    BotCommand("oner", "🎵 Şarkı önerir"),
-    BotCommand("para", "🪙 Yazı tura atar"),
-    BotCommand("saka", "😂 Rastgele şaka gönderir"),
-    BotCommand("chatmode", "💬 Sohbet modunu aç/kapat"),
-    BotCommand("ayarlar", "⚙️ Bot Ayarlarını Gösterir"),
-    BotCommand("restart", "🔃 Botu Yeniden Başlatır"),
-    BotCommand("reload", "❤️‍🔥 Yönetici Önbelleğini Günceller"),
-
-    
-]
-
-
-async def set_commands(client):
-    await client.set_bot_commands(private_commands, scope=BotCommandScopeAllPrivateChats())
-    await client.set_bot_commands(group_commands, scope=BotCommandScopeAllGroupChats())
-
-
-class ArchMusic(Client):
+class ArchMusicBot:
     def __init__(self):
-        LOGGER(__name__).info(f"Bot Başlatılıyor")
-        super().__init__(
-            "ArchMusic",
-            api_id=config.API_ID,
-            api_hash=config.API_HASH,
-            bot_token=config.BOT_TOKEN,
+        self.log = setup_logging("INFO")
+        ensure_directories()
+        init_database()
+        load_sudoers()
+
+        api_id = int(os.getenv("API_ID", "0"))
+        api_hash = os.getenv("API_HASH", "")
+        bot_token = os.getenv("BOT_TOKEN", "")
+
+        if not (api_id and api_hash and bot_token):
+            raise RuntimeError("API_ID / API_HASH / BOT_TOKEN is missing")
+
+        self.app = Client(
+            name="ArchMusic",
+            api_id=api_id,
+            api_hash=api_hash,
+            bot_token=bot_token,
+            in_memory=True,
+            workers=8,
         )
+        self.call = CallManager(self.app)
 
-    async def start(self):
-        await super().start()
-        try:
-            get_me = await self.get_me()
-            self.username = get_me.username
-            self.id = get_me.id
+        upstream = os.getenv("UPSTREAM_REPO")
+        if upstream:
+            fetch_updates(upstream)
 
-            video_url = "https://telegra.ph/file/36221d40afde82941ffff.mp4"
-            caption = "__ bot aktif ✅. . . __"
-            
-            try:
-                await self.send_video(
-                    config.LOG_GROUP_ID,
-                    video=video_url,
-                    caption=caption,
-                )
-            except:
-                LOGGER(__name__).error(
-                    "Bot log grubuna erişemedi. Log kanalınıza botunuzu eklediğinizden ve yönetici olarak terfi ettirdiğinizden emin olun!"
-                )
-                sys.exit()
+    async def _amain(self):
+        self.log.info("ArchMusic.core.bot - Bot Başlatılıyor")
+        await self.app.start()
+        await self.call.start()
+        await idle()
+        await self.call.stop()
+        await self.app.stop()
 
-            await set_commands(self)  
-
-            a = await self.get_chat_member(config.LOG_GROUP_ID, self.id)
-            if a.status != ChatMemberStatus.ADMINISTRATOR:
-                LOGGER(__name__).error(
-                    "Lütfen Logger Grubunda Botu Yönetici Olarak Terfi Ettirin"
-                )
-                sys.exit()
-
-        except Exception as e:
-            LOGGER(__name__).error(f"Bot başlatılırken hata oluştu: {e}")
-            sys.exit()
-
-        if get_me.last_name:
-            self.name = get_me.first_name + " " + get_me.last_name
-        else:
-            self.name = get_me.first_name
-
-        LOGGER(__name__).info(f"MusicBot {self.name} olarak başlatıldı")
+    def run(self):
+        asyncio.get_event_loop().run_until_complete(self._amain())
