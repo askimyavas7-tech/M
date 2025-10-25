@@ -14,10 +14,10 @@ requests
 spotipy==2.23.0
 tgcrypto>=1.2.5
 
-# 🔧 uvloop crash önlemi
+# 🔧 uvloop crash fix (stabil sürüm)
 uvloop==0.17.0
 
-# ✅ Pyrogram & Voice uyumlu sürüm
+# ✅ Pyrogram & pytgcalls uyumlu sürümler
 pyrogram==2.0.106
 py-tgcalls==0.9.7
 
