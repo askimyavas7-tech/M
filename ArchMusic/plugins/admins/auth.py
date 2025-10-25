@@ -1,11 +1,5 @@
 #
-# Copyright (C) 2021-2023 by ArchBots@Github, < https://github.com/ArchBots >.
-#
-# This file is part of < https://github.com/ArchBots/ArchMusic > project,
-# and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/ArchBots/ArchMusic/blob/master/LICENSE >
-#
-# All rights reserved.
+# Copyright (C) 2021-2023 by ArchBots@Github
 #
 
 from pyrogram import filters
@@ -13,10 +7,13 @@ from pyrogram.types import Message
 
 from config import BANNED_USERS, adminlist
 from strings import get_command
-from ArchMusic import app
-from ArchMusic.utils.database import (delete_authuser, get_authuser,
-                                       get_authuser_names,
-                                       save_authuser)
+from ArchMusic.core.bot import bot      # <-- DOĞRU IMPORT
+from ArchMusic.utils.database import (
+    delete_authuser,
+    get_authuser,
+    get_authuser_names,
+    save_authuser
+)
 from ArchMusic.utils.decorators import AdminActual, language
 from ArchMusic.utils.formatters import int_to_alpha
 
@@ -25,6 +22,7 @@ AUTH_COMMAND = get_command("AUTH_COMMAND")
 UNAUTH_COMMAND = get_command("UNAUTH_COMMAND")
 AUTHUSERS_COMMAND = get_command("AUTHUSERS_COMMAND")
 
+app = bot.app  # <-- Pyrogram client
 
 @app.on_message(
     filters.command(AUTH_COMMAND)
