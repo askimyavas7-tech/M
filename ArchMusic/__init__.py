@@ -1,42 +1,28 @@
 #
-# Copyright (C) 2021-2023 by ArchBots@Github, < https://github.com/ArchBots >.
-#
-# This file is part of < https://github.com/ArchBots/ArchMusic > project,
-# and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/ArchBots/ArchMusic/blob/master/LICENSE >
-#
-# All rights reserved.
+# ArchMusic package initializer
+# Import gerekli kullanıcı ve platform API’leri
 #
 
-from ArchMusic.core.bot import ArchMusic
 from ArchMusic.core.dir import dirr
 from ArchMusic.core.git import git
-from ArchMusic.core.userbot import Userbot
 from ArchMusic.misc import dbb, heroku, sudo
-
 from .logging import LOGGER
 
-# Directories
+# Run essential setup tasks
 dirr()
-
-# Check Git Updates
 git()
-
-# Initialize Memory DB
 dbb()
-
-# Heroku APP
 heroku()
-
-# Load Sudo Users from DB
 sudo()
 
-# Bot Client
-app = ArchMusic()
+# ✅ Bot veya Userbot burada başlatılmayacak!!
+# Bunları bot.py çalıştıracak.
+#
+# ❌ AŞAĞIDAKİLER KALDIRILDI:
+# app = ArchMusic()
+# userbot = Userbot()
 
-# Assistant Client
-userbot = Userbot()
-
+# ✅ Platform API’leri import edilebilir
 from .platforms import *
 
 YouTube = YouTubeAPI()
@@ -46,3 +32,5 @@ Apple = AppleAPI()
 Resso = RessoAPI()
 SoundCloud = SoundAPI()
 Telegram = TeleAPI()
+
+LOGGER.info("✅ ArchMusic paket yüklemesi tamamlandı.")
