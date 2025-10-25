@@ -1,5 +1,5 @@
 # ===============================================
-# 🌌 Kumsal Bots - Parıltılı Müzik Arayüzü
+# 🌌 prenses Bots - Parıltılı Müzik Arayüzü
 # Minimal, modern, sade ve güçlü kontrol sistemi
 # ===============================================
 
@@ -36,7 +36,7 @@ def progress_bar(played, total):
 # ───────────────────────────────
 def stream_markup_timer(_, videoid, chat_id, played, dur):
     buttons = [
-        [InlineKeyboardButton("🌌 ᴍᴀᴠɪ ᴅᴜʏᴜʀᴜ 🌌", url="https://t.me/maviduyuru")],
+        [InlineKeyboardButton("🌌 prenses ᴅᴜʏᴜʀᴜ 🌌", url="https://t.me/prenses_muzik_duyuru")],
         [InlineKeyboardButton(text=progress_bar(played, dur), callback_data="nonclickable")],
         [
             InlineKeyboardButton("⏮", callback_data=f"ADMIN 1|{chat_id}"),
@@ -58,7 +58,7 @@ def stream_markup_timer(_, videoid, chat_id, played, dur):
 # ───────────────────────────────
 def telegram_markup_timer(_, chat_id, played, dur, videoid):
     buttons = [
-        [InlineKeyboardButton("🚀  ᴍᴀᴠɪ ᴅᴜʏᴜʀᴜ 🚀", url="https://t.me/the_team_kumsal")],
+        [InlineKeyboardButton("🚀  prenses ᴅᴜʏᴜʀᴜ 🚀", url="https://t.me/the_team_kumsal")],
         [InlineKeyboardButton(progress_bar(played, dur), callback_data="nonclickable")],
         [
             InlineKeyboardButton("⏮", callback_data=f"ADMIN 1|{chat_id}"),
@@ -309,8 +309,8 @@ def telegram_markup_timer(_, chat_id, played, dur, videoid):
     buttons = [
         [
             InlineKeyboardButton(
-                text=f"𝙆𝙐𝙈𝙎𝘼𝙇 𝘽𝙊𝙏𝙎 ", 
-                url=f"https://t.me/the_team_kumsal"
+                text=f"PRENSES 𝘽𝙊𝙏𝙎 ", 
+                url=f"https://t.me/prenses_muzik_duyuru"
             )
         ],
 
@@ -339,8 +339,8 @@ def stream_markup(_, videoid, chat_id):
     buttons = [
         [
             InlineKeyboardButton(
-                text=f"𝙆𝙐𝙈𝙎𝘼𝙇 𝘽𝙊𝙏𝙎", 
-                url=f"https://t.me/the_team_kumsal"
+                text=f"PRENSES 𝘽𝙊𝙏𝙎", 
+                url=f"https://t.me/prenses_muzik_duyuru"
             )
         ],
 
@@ -380,8 +380,8 @@ def track_markup(_, videoid, user_id, channel, fplay):
     buttons = [
         [
             InlineKeyboardButton(
-                text=f"𝙆𝙐𝙈𝙎𝘼𝙇 𝘽𝙊𝙏𝙎", 
-                url=f"https://t.me/the_team_kumsal"
+                text=f"PRENSES 𝘽𝙊𝙏𝙎", 
+                url=f"https://t.me/prenses_muzik_duyuru"
             )
         ],
 
@@ -403,8 +403,8 @@ def playlist_markup(_, videoid, user_id, ptype, channel, fplay):
     buttons = [
         [
             InlineKeyboardButton(
-                text=f"⚡ 𝙆𝙐𝙈𝙎𝘼𝙇 𝘽𝙊𝙏𝙎 ⚡", 
-                url=f"https://t.me/the_team_kumsal"
+                text=f"⚡ PRENSES 𝘽𝙊𝙏𝙎 ⚡", 
+                url=f"https://t.me/prenses_muzik_duyuru"
             )
         ],
 
