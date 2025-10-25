@@ -20,36 +20,31 @@ class ArchMusicBot:
     def __init__(self):
         self.log = setup_logging("INFO")
 
-        # ✅ ENV ÇEK
         api_id = int(os.getenv("API_ID", "0"))
         api_hash = os.getenv("API_HASH", "")
         bot_token = os.getenv("BOT_TOKEN", "")
 
         if not api_id or not api_hash or not bot_token:
             raise RuntimeError(
-                "API_ID / API_HASH / BOT_TOKEN eksik.\n➡ Heroku Config Vars kısmından ekle!"
+                "API_ID / API_HASH / BOT_TOKEN eksik.\n➡ Heroku Config Vars kısmını kontrol et!"
             )
 
-        # ✅ PYROGRAM BOT
         self.app = Client(
             "ArchMusic",
             api_id=api_id,
             api_hash=api_hash,
             bot_token=bot_token,
-            plugins=dict(root="ArchMusic.plugins")  # <-- PLUGINS AKTİF ❗
+            plugins=dict(root="ArchMusic.plugins")
         )
 
-        # ✅ SES SİSTEMİ
         self.call = CallManager(self.app)
 
-        # ✅ DATABASE & SUDO
         try:
             init_database()
             load_sudoers()
         except:
             pass
 
-        # ✅ Upstream Repo Güncellemesi (opsiyonel)
         upstream = os.getenv("UPSTREAM_REPO")
         if upstream:
             try:
@@ -80,7 +75,6 @@ class ArchMusicBot:
             self.log.warning("⚠ Bot manuel olarak durduruldu.")
 
 
-# ✅ ÇALIŞTIRICI
-if __name__ == "__main__":
-    bot = ArchMusicBot()
-    bot.run()
+# ✅ IMPORT SORUNLARINI ÇÖZMEK İÇİN EKLENDİ
+bot = ArchMusicBot()
+app = bot.app
