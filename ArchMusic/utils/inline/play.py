@@ -1,595 +1,585 @@
 # ===============================================
-# 🌌 Kumsal Bots - Parıltılı Müzik Arayüzü
-# Minimal, modern, sade ve güçlü kontrol sistemi
+# ğŸŒŒ Prenses Bots - Parıltı Müzik Arayüzü
+# Minimal, modern, sade ve güzel kontrol sistemi
 # ===============================================
 
-import math
-from pyrogram.types import InlineKeyboardButton
+ithalat matematiği
+pyrogram.types'tan InlineKeyboardButton'ı içe aktarın
 
-# ───────────────────────────────
-# 🔹 Basit ve şık zaman dönüştürücü
-# ───────────────────────────────
+# â”€â€â”â€â€â€â”€â€â”€â€â€â”€â€â€â€”€â”â€â”€â€â”€â€â”€â€â”€â”€â”€â”â”€â”€â”€â”€â”â”€â”€
+# ğŸ”¹ Basit ve Şükür zaman dünü
+# â”€â€â”â€â€â€â”€â€â”€â€â€â”€â€â€â€”€â”â€â”€â€â”€â€â”€â€â”€â”€â”€â”â”€â”€â”€â”€â”â”€â”€
 def time_to_sec(t):
-    parts = list(map(int, t.split(":")))
-    return parts[0] * 60 + parts[1] if len(parts) == 2 else 0
+    parçalar = liste(harita(int, t.split(":")))
+    len(parçalar) == 2 ise parçalar[0] * 60 + parçalar[1] değerini döndür, aksi takdirde 0
 
 
-# ───────────────────────────────
-# 💫 Parıltılı ilerleme çubuğu
-# ───────────────────────────────
-def progress_bar(played, total):
-    played_sec = time_to_sec(played)
-    total_sec = time_to_sec(total) or 1
-    ratio = played_sec / total_sec
-    pos = int(ratio * 10)
-    bar = ""
-    for i in range(10):
-        if i == pos:
-            bar += "🔹"  # mavi parıltı noktası
-        else:
-            bar += "⠂"  # zarif çizgi efekti
-    return f"{played}  {bar}  {total}"
+# â”€â€â”â€â€â€â”€â€â”€â€â€â”€â€â€â€”€â”â€â”€â€â”€â€â”€â€â”€â”€â”€â”â”€â”€â”€â”€â”â”€â”€
+# ğŸ'« Parıltı ilerlemesi Çubuğu
+# â”€â€â”â€â€â€â”€â€â”€â€â€â”€â€â€â€”€â”â€â”€â€â”€â€â”€â€â”€â”€â”€â”â”€â”€â”€â”€â”â”€â”€
+def progress_bar(oynandı, toplam):
+    oynanan_sn = saniyeye_kadar_zaman(oynandı)
+    toplam_sn = saniyeye_kadar_zaman(toplam) veya 1
+    oran = oynanan_sn / toplam_sn
+    pos = int(oran * 10)
+    çubuk = ""
+    i aralığında (10) için:
+        eğer i == pos:
+            bar += "ğŸ”¹" # mavi parıltı noktasÄ±
+        başka:
+            bar += "â ‚" # zarif Çizim efekti
+    f"{oynandı} {bar} {toplam}" döndür
 
 
-# ───────────────────────────────
-# 🎧 Stream oynatma (YouTube vb.)
-# ───────────────────────────────
-def stream_markup_timer(_, videoid, chat_id, played, dur):
-    buttons = [
-        [InlineKeyboardButton("🌌 ᴍᴀᴠɪ ᴅᴜʏᴜʀᴜ 🌌", url="https://t.me/maviduyuru")],
-        [InlineKeyboardButton(text=progress_bar(played, dur), callback_data="nonclickable")],
+# â”€â€â”â€â€â€â”€â€â”€â€â€â”€â€â€â€”€â”â€â”€â€â”€â€â”€â€â”€â”€â”€â”â”€â”€â”€â”€â”â”€â”€
+# ğŸŽ§ Akış oynatma (YouTube vb.)
+# â”€â€â”â€â€â€â”€â€â”€â€â€â”€â€â€â€”€â”â€â”€â€â”€â€â”€â€â”€â”€â”€â”â”€â”€â”€â”€â”â”€â”€
+def stream_markup_timer(_, videoid, chat_id, oynatıldı, süre):
+    düğmeler = [
+        [InlineKeyboardButton("ğŸŒŒ prenses á´…á´œÊ á´œÊ€á´œ ğŸŒŒ", url = "https://t.me/prenses_muzik_duyuru")],
+        [InlineKeyboardButton(metin=ilerleme_çubuğu(oynandı, süre), geri_çağrı_verisi="tıklanamaz")],
         [
-            InlineKeyboardButton("⏮", callback_data=f"ADMIN 1|{chat_id}"),
-            InlineKeyboardButton("⏸", callback_data=f"pausevc {chat_id}"),
-            InlineKeyboardButton("▶️", callback_data=f"resumevc {chat_id}"),
-            InlineKeyboardButton("⏭", callback_data=f"ADMIN 2|{chat_id}"),
-            InlineKeyboardButton("⏹", callback_data=f"stopvc {chat_id}"),
+            InlineKeyboardButton("â ®", geri arama_verisi=f"YÖNETİCİ 1|{sohbet_kimliği}"),
+            InlineKeyboardButton("â ¸", geri arama_verisi=f"duraklatvc {sohbet_kimliği}"),
+            InlineKeyboardButton("â–¶ï¸ ", geri_çağrı_verisi=f"resumevc {sohbet_kimliği}"),
+            InlineKeyboardButton("â ", geri arama_verisi=f"YÖNETİCİ 2|{sohbet_kimliği}"),
+            InlineKeyboardButton("â ¹", geri arama_verisi=f"stopvc {sohbet_kimliği}"),
         ],
         [
-            InlineKeyboardButton("💎 Listeye Ekle", callback_data=f"add_playlist {videoid}"),
-            InlineKeyboardButton("✨ Kontrol Paneli", callback_data=f"PanelMarkup None|{chat_id}"),
-        ],
-    ]
-    return buttons
-
-
-# ───────────────────────────────
-# 🌀 Telegram stream oynatma
-# ───────────────────────────────
-def telegram_markup_timer(_, chat_id, played, dur, videoid):
-    buttons = [
-        [InlineKeyboardButton("🚀  ᴍᴀᴠɪ ᴅᴜʏᴜʀᴜ 🚀", url="https://t.me/the_team_kumsal")],
-        [InlineKeyboardButton(progress_bar(played, dur), callback_data="nonclickable")],
-        [
-            InlineKeyboardButton("⏮", callback_data=f"ADMIN 1|{chat_id}"),
-            InlineKeyboardButton("⏸", callback_data=f"pausevc {chat_id}"),
-            InlineKeyboardButton("▶️", callback_data=f"resumevc {chat_id}"),
-            InlineKeyboardButton("⏭", callback_data=f"ADMIN 2|{chat_id}"),
-            InlineKeyboardButton("⏹", callback_data=f"stopvc {chat_id}"),
-        ],
-        [
-            InlineKeyboardButton("💎 Listeye Ekle", callback_data=f"add_playlist {videoid}"),
-            InlineKeyboardButton("✨ Kontrol Paneli", callback_data=f"PanelMarkup None|{chat_id}"),
+            InlineKeyboardButton("ğŸ'Ž Listeye Ekle", callback_data=f"add_playlist {videoid}"),
+            InlineKeyboardButton("âœ¨ Kontrol Paneli", callback_data=f"PanelMarkup Yok|{chat_id}"),
         ],
     ]
-    return buttons
+    dönüş düğmeleri
 
 
-# ───────────────────────────────
-# 🎛️ Standart kontrol menüsü
-# ───────────────────────────────
-def telegram_markup(_, chat_id):
-    buttons = [
+# â”€â€â”â€â€â€â”€â€â”€â€â€â”€â€â€â€”€â”â€â”€â€â”€â€â”€â€â”€â”€â”€â”â”€â”€â”€â”€â”â”€â”€
+# ğŸŒ€ Telegram akışı oynatma
+# â”€â€â”â€â€â€â”€â€â”€â€â€â”€â€â€â€”€â”â€â”€â€â”€â€â”€â€â”€â”€â”€â”â”€â”€â”€â”€â”â”€â”€
+def telegram_markup_timer(_, chat_id, oynatıldı, dur, videoid):
+    düğmeler = [
+        [InlineKeyboardButton("ğŸš€ ğ ™¿ğ š ğ ™´ğ ™½ğ š‚ğ ™´ğ š‚ á´…á´œÊ á´œÊ€á´œ ğŸš€", url = "https://t.me/prenses_muzik_duyuru")],
+        [InlineKeyboardButton(progress_bar(oynatılan, süre), geri_çağrı_verisi="tıklanamayan")],
         [
-            InlineKeyboardButton("⏮", callback_data=f"ADMIN 1|{chat_id}"),
-            InlineKeyboardButton("⏸", callback_data=f"pausevc {chat_id}"),
-            InlineKeyboardButton("▶️", callback_data=f"resumevc {chat_id}"),
-            InlineKeyboardButton("⏭", callback_data=f"ADMIN 2|{chat_id}"),
-            InlineKeyboardButton("⏹", callback_data=f"stopvc {chat_id}"),
+            InlineKeyboardButton("â ®", geri arama_verisi=f"YÖNETİCİ 1|{sohbet_kimliği}"),
+            InlineKeyboardButton("â ¸", geri arama_verisi=f"duraklatvc {sohbet_kimliği}"),
+            InlineKeyboardButton("â–¶ï¸ ", geri_çağrı_verisi=f"resumevc {sohbet_kimliği}"),
+            InlineKeyboardButton("â ", geri arama_verisi=f"YÖNETİCİ 2|{sohbet_kimliği}"),
+            InlineKeyboardButton("â ¹", geri arama_verisi=f"stopvc {sohbet_kimliği}"),
         ],
         [
-            InlineKeyboardButton("💠 Menüye Dön", callback_data=f"PanelMarkup None|{chat_id}"),
-            InlineKeyboardButton("❌ Kapat", callback_data="close"),
-        ],
-    ]
-    return buttons
-
-
-# ───────────────────────────────
-# 🧩 Track seçimi (liste veya sorgu)
-# ───────────────────────────────
-def track_markup(_, videoid, user_id, channel, fplay):
-    buttons = [
-        [
-            InlineKeyboardButton(
-                text=_["P_B_1"], callback_data=f"MusicStream {videoid}|{user_id}|a|{channel}|{fplay}",
-            ),
-            InlineKeyboardButton(
-                text=_["P_B_2"], callback_data=f"MusicStream {videoid}|{user_id}|v|{channel}|{fplay}",
-            ),
-        ],
-        [InlineKeyboardButton("❌ Kapat", callback_data=f"forceclose {videoid}|{user_id}")],
-    ]
-    return buttons
-
-
-# ───────────────────────────────
-# 📜 Playlist menüsü
-# ───────────────────────────────
-def playlist_markup(_, videoid, user_id, ptype, channel, fplay):
-    buttons = [
-        [
-            InlineKeyboardButton(
-                text=_["P_B_1"], callback_data=f"YukkiPlaylists {videoid}|{user_id}|{ptype}|a|{channel}|{fplay}",
-            ),
-            InlineKeyboardButton(
-                text=_["P_B_2"], callback_data=f"YukkiPlaylists {videoid}|{user_id}|{ptype}|v|{channel}|{fplay}",
-            ),
-        ],
-        [InlineKeyboardButton("❌ Kapat", callback_data=f"forceclose {videoid}|{user_id}")],
-    ]
-    return buttons
-
-
-# ───────────────────────────────
-# 📺 Canlı yayın oynatma menüsü
-# ───────────────────────────────
-def livestream_markup(_, videoid, user_id, mode, channel, fplay):
-    buttons = [
-        [
-            InlineKeyboardButton(
-                text=_["P_B_3"],
-                callback_data=f"LiveStream {videoid}|{user_id}|{mode}|{channel}|{fplay}",
-            ),
-            InlineKeyboardButton(
-                text=_["CLOSEMENU_BUTTON"],
-                callback_data=f"forceclose {videoid}|{user_id}",
-            ),
+            InlineKeyboardButton("ğŸ'Ž Listeye Ekle", callback_data=f"add_playlist {videoid}"),
+            InlineKeyboardButton("âœ¨ Kontrol Paneli", callback_data=f"PanelMarkup Yok|{chat_id}"),
         ],
     ]
-    return buttons
+    dönüş düğmeleri
 
 
-## Slider Query Markup
+# â”€â€â”â€â€â€â”€â€â”€â€â€â”€â€â€â€”€â”â€â”€â€â”€â€â”€â€â”€â”€â”€â”â”€â”€â”€â”€â”â”€â”€
+# ğŸŽ›ï¸ Standart kontrol menüleriÜ¼
+# â”€â€â”â€â€â€â”€â€â”€â€â€â”€â€â€â€”€â”â€â”€â€â”€â€â”€â€â”€â”€â”€â”â”€â”€â”€â”€â”â”€â”€
+def telegram_markup(_, sohbet_kimliği):
+    düğmeler = [
+        [
+            InlineKeyboardButton("â ®", geri arama_verisi=f"YÖNETİCİ 1|{sohbet_kimliği}"),
+            InlineKeyboardButton("â ¸", geri arama_verisi=f"duraklatvc {sohbet_kimliği}"),
+            InlineKeyboardButton("â–¶ï¸ ", geri_çağrı_verisi=f"resumevc {sohbet_kimliği}"),
+            InlineKeyboardButton("â ", geri arama_verisi=f"YÖNETİCİ 2|{sohbet_kimliği}"),
+            InlineKeyboardButton("â ¹", geri arama_verisi=f"stopvc {sohbet_kimliği}"),
+        ],
+        [
+            InlineKeyboardButton("ğŸ' Menüye Dün", callback_data=f"PanelMarkup Yok|{chat_id}"),
+            InlineKeyboardButton("â Œ Kapat", callback_data="close"),
+        ],
+    ]
+    dönüş düğmeleri
 
 
-def slider_markup(
-    _, videoid, user_id, query, query_type, channel, fplay
+# â”€â€â”â€â€â€â”€â€â”€â€â€â”€â€â€â€”€â”â€â”€â€â”€â€â”€â€â”€â”€â”€â”â”€â”€â”€â”€â”â”€â”€
+# ğŸ§© Parça seÃ§imi (liste veya sorgu)
+# â”€â€â”â€â€â€â”€â€â”€â€â€â”€â€â€â€”€â”â€â”€â€â”€â€â”€â€â”€â”€â”€â”â”€â”€â”€â”€â”â”€â”€
+def track_markup(_, videoid, kullanıcı_id, kanal, fplay):
+    düğmeler = [
+        [
+            Satır İçi Klavye Düğmesi(
+                metin=_["P_B_1"], geri arama_verisi=f"MusicStream {videoid}|{user_id}|a|{kanal}|{fplay}",
+            ),
+            Satır İçi Klavye Düğmesi(
+                metin=_["P_B_2"], geri arama_verisi=f"MusicStream {videoid}|{user_id}|v|{channel}|{fplay}",
+            ),
+        ],
+        [InlineKeyboardButton("â Œ Kapat", geri arama_verisi=f"forceclose {videoid}|{user_id}")],
+    ]
+    dönüş düğmeleri
+
+
+# â”€â€â”â€â€â€â”€â€â”€â€â€â”€â€â€â€”€â”â€â”€â€â”€â€â”€â€â”€â”€â”€â”â”€â”€â”€â”€â”â”€â”€
+# ğŸ“œ Çalma listesi menüsü
+# â”€â€â”â€â€â€â”€â€â”€â€â€â”€â€â€â€”€â”â€â”€â€â”€â€â”€â€â”€â”€â”€â”â”€â”€â”€â”€â”â”€â”€
+def playlist_markup(_, videoid, user_id, ptype, kanal, fplay):
+    düğmeler = [
+        [
+            Satır İçi Klavye Düğmesi(
+                metin=_["P_B_1"], geri arama_verisi=f"YukkiPlaylists {videoid}|{user_id}|{ptype}|a|{channel}|{fplay}",
+            ),
+            Satır İçi Klavye Düğmesi(
+                metin=_["P_B_2"], geri arama_verisi=f"YukkiPlaylists {videoid}|{user_id}|{ptype}|v|{channel}|{fplay}",
+            ),
+        ],
+        [InlineKeyboardButton("â Œ Kapat", geri arama_verisi=f"forceclose {videoid}|{user_id}")],
+    ]
+    dönüş düğmeleri
+
+
+# â”€â€â”â€â€â€â”€â€â”€â€â€â”€â€â€â€”€â”â€â”€â€â”€â€â”€â€â”€â”€â”€â”â”€â”€â”€â”€â”â”€â”€
+# ğŸ“º Canlı yayının oynatma menüsü
+# â”€â€â”â€â€â€â”€â€â”€â€â€â”€â€â€â€”€â”â€â”€â€â”€â€â”€â€â”€â”€â”€â”â”€â”€â”€â”€â”â”€â”€
+def livestream_markup(_, videoid, user_id, mod, kanal, fplay):
+    düğmeler = [
+        [
+            Satır İçi Klavye Düğmesi(
+                metin=_["P_B_3"],
+                callback_data=f"Canlı Yayın {videoid}|{user_id}|{mode}|{channel}|{fplay}",
+            ),
+            Satır İçi Klavye Düğmesi(
+                metin=_["MENÜYÜ_KAPATMA_DÜĞMESİ"],
+                geri arama_verisi=f"forceclose {videoid}|{kullanıcı_kimliği}",
+            ),
+        ],
+    ]
+    dönüş düğmeleri
+
+
+## Kaydırıcı Sorgu İşaretlemesi
+
+
+def kaydırıcı_işaretleme(
+    _, videoid, kullanıcı_kimliği, sorgu, sorgu_türü, kanal, fplay
 ):
-    query = f"{query[:20]}"
-    buttons = [
+    sorgu = f"{sorgu[:20]}"
+    düğmeler = [
         [
-            InlineKeyboardButton(
-                text=_["P_B_1"],
-                callback_data=f"MusicStream {videoid}|{user_id}|a|{channel}|{fplay}",
+            Satır İçi Klavye Düğmesi(
+                metin=_["P_B_1"],
+                geri arama_verisi=f"MusicStream {videoid}|{user_id}|a|{kanal}|{fplay}",
             ),
-            InlineKeyboardButton(
-                text=_["P_B_2"],
-                callback_data=f"MusicStream {videoid}|{user_id}|v|{channel}|{fplay}",
+            Satır İçi Klavye Düğmesi(
+                metin=_["P_B_2"],
+                geri arama_verisi=f"MusicStream {videoid}|{user_id}|v|{kanal}|{fplay}",
             ),
         ],
         [
-            InlineKeyboardButton(
-                text="❮",
-                callback_data=f"slider B|{query_type}|{query}|{user_id}|{channel}|{fplay}",
+            Satır İçi Klavye Düğmesi(
+                metin="â ®",
+                geri arama_verisi=f"kaydırıcı B|{sorgu_türü}|{sorgu}|{kullanıcı_kimliği}|{kanal}|{fplay}",
             ),
-            InlineKeyboardButton(
-                text=_["CLOSE_BUTTON"],
-                callback_data=f"forceclose {query}|{user_id}",
+            Satır İçi Klavye Düğmesi(
+                metin=_["KAPAT_DÜĞMESİ"],
+                geri arama_verisi=f"forceclose {sorgu}|{kullanıcı_kimliği}",
             ),
-            InlineKeyboardButton(
-                text="❯",
-                callback_data=f"slider F|{query_type}|{query}|{user_id}|{channel}|{fplay}",
-            ),
-        ],
-    ]
-    return buttons
-
-
-## Cpanel Markup
-
-
-def panel_markup_1(_, videoid, chat_id):
-    buttons = [
-        [
-            InlineKeyboardButton(
-                text="⏸ Pause", callback_data=f"ADMIN Pause|{chat_id}"
-            ),
-            InlineKeyboardButton(
-                text="▶️ Resume",
-                callback_data=f"ADMIN Resume|{chat_id}",
-            ),
-        ],
-        [
-            InlineKeyboardButton(
-                text="⏯ Skip", callback_data=f"ADMIN Skip|{chat_id}"
-            ),
-            InlineKeyboardButton(
-                text="⏹ Stop", callback_data=f"ADMIN Stop|{chat_id}"
-            ),
-        ],
-        [
-            InlineKeyboardButton(
-                text="◀️",
-                callback_data=f"Pages Back|0|{videoid}|{chat_id}",
-            ),
-            InlineKeyboardButton(
-                text="🔙 Back",
-                callback_data=f"MainMarkup {videoid}|{chat_id}",
-            ),
-            InlineKeyboardButton(
-                text="▶️",
-                callback_data=f"Pages Forw|0|{videoid}|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                metin="â ¯",
+                geri arama_verisi=f"kaydırıcı F|{sorgu_türü}|{sorgu}|{kullanıcı_kimliği}|{kanal}|{fplay}",
             ),
         ],
     ]
-    return buttons
+    dönüş düğmeleri
 
 
-def panel_markup_2(_, videoid, chat_id):
-    buttons = [
-        [
-            InlineKeyboardButton(
-                text="🔇 Mute", callback_data=f"ADMIN Mute|{chat_id}"
-            ),
-            InlineKeyboardButton(
-                text="🔊 Unmute",
-                callback_data=f"ADMIN Unmute|{chat_id}",
-            ),
-        ],
-        [
-            InlineKeyboardButton(
-                text="🔀 Shuffle",
-                callback_data=f"ADMIN Shuffle|{chat_id}",
-            ),
-            InlineKeyboardButton(
-                text="🔁 Loop", callback_data=f"ADMIN Loop|{chat_id}"
-            ),
-        ],
-        [
-            InlineKeyboardButton(
-                text="◀️",
-                callback_data=f"Pages Back|1|{videoid}|{chat_id}",
-            ),
-            InlineKeyboardButton(
-                text="🔙 Back",
-                callback_data=f"MainMarkup {videoid}|{chat_id}",
-            ),
-            InlineKeyboardButton(
-                text="▶️",
-                callback_data=f"Pages Forw|1|{videoid}|{chat_id}",
-            ),
-        ],
-    ]
-    return buttons
+## Cpanel İşaretlemesi
 
 
-def panel_markup_3(_, videoid, chat_id):
-    buttons = [
+def panel_markup_1(_, video kimliği, chat_id):
+    düğmeler = [
         [
-            InlineKeyboardButton(
-                text="⏮ 10 Seconds",
-                callback_data=f"ADMIN 1|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                text="â ¸ Duraklat", callback_data=f"YÖNETİCİ Duraklat|{sohbet_kimliği}"
             ),
-            InlineKeyboardButton(
-                text="⏭ 10 Seconds",
-                callback_data=f"ADMIN 2|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                text="â–¶ï¸ Özgeçmiş",
+                callback_data=f"YÖNETİCİ Özgeçmişi|{sohbet_kimliği}",
             ),
         ],
         [
-            InlineKeyboardButton(
-                text="⏮ 30 Seconds",
-                callback_data=f"ADMIN 3|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                text="â ¯ Atla", callback_data=f"YÖNETİCİ Atla|{chat_id}"
             ),
-            InlineKeyboardButton(
-                text="⏭ 30 Seconds",
-                callback_data=f"ADMIN 4|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                text="â ¹ Durdur", callback_data=f"YÖNETİCİ Durdur|{sohbet_kimliği}"
             ),
         ],
         [
-            InlineKeyboardButton(
-                text="◀️",
-                callback_data=f"Pages Back|2|{videoid}|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                metin="â—€ï¸ ",
+                callback_data=f"Sayfalar Geri|0|{videoid}|{chat_id}",
             ),
-            InlineKeyboardButton(
-                text="🔙 Back",
-                callback_data=f"MainMarkup {videoid}|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                text="ğŸ”™ Geri",
+                geri arama_verisi=f"Anaİşaretleme {videoid}|{sohbet_id}",
             ),
-            InlineKeyboardButton(
-                text="▶️",
-                callback_data=f"Pages Forw|2|{videoid}|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                metin="â–¶ï¸ ",
+                callback_data=f"İleri Sayfalar|0|{videoid}|{sohbet_id}",
             ),
         ],
     ]
-    return buttons
+    dönüş düğmeleri
 
 
-def telegram_markup_timer(_, chat_id, played, dur, videoid):
-    bar = random.choice(selection)
-    buttons = [
+def panel_markup_2(_, video kimliği, chat_id):
+    düğmeler = [
         [
-            InlineKeyboardButton(
-                text=f"𝙆𝙐𝙈𝙎𝘼𝙇 𝘽𝙊𝙏𝙎 ", 
-                url=f"https://t.me/the_team_kumsal"
+            Satır İçi Klavye Düğmesi(
+                text="ğŸ”‡ Sessize Al", callback_data=f"YÖNETİCİ Sessize Al|{chat_id}"
+            ),
+            Satır İçi Klavye Düğmesi(
+                text="ğŸ”Š Sesi Aç",
+                callback_data=f"YÖNETİCİ Sessizliği Kaldır|{chat_id}",
+            ),
+        ],
+        [
+            Satır İçi Klavye Düğmesi(
+                text="ğŸ”€ Karıştır",
+                callback_data=f"YÖNETİCİ Karıştırma|{sohbet_kimliği}",
+            ),
+            Satır İçi Klavye Düğmesi(
+                text="ğŸ” Döngüsü", callback_data=f"YÖNETİCİ Döngüsü|{chat_id}"
+            ),
+        ],
+        [
+            Satır İçi Klavye Düğmesi(
+                metin="â—€ï¸ ",
+                callback_data=f"Sayfalar Geri|1|{videoid}|{chat_id}",
+            ),
+            Satır İçi Klavye Düğmesi(
+                text="ğŸ”™ Geri",
+                geri arama_verisi=f"Anaİşaretleme {videoid}|{sohbet_id}",
+            ),
+            Satır İçi Klavye Düğmesi(
+                metin="â–¶ï¸ ",
+                callback_data=f"İleri Sayfalar|1|{videoid}|{sohbet_id}",
+            ),
+        ],
+    ]
+    dönüş düğmeleri
+
+
+def panel_markup_3(_, video kimliği, chat_id):
+    düğmeler = [
+        [
+            Satır İçi Klavye Düğmesi(
+                text="â ® 10 Saniye",
+                geri arama_verisi=f"YÖNETİCİ 1|{sohbet_kimliği}",
+            ),
+            Satır İçi Klavye Düğmesi(
+                text="â 10 Saniye",
+                geri arama_verisi=f"YÖNETİCİ 2|{sohbet_kimliği}",
+            ),
+        ],
+        [
+            Satır İçi Klavye Düğmesi(
+                text="â ® 30 Saniye",
+                geri arama_verisi=f"YÖNETİCİ 3|{sohbet_kimliği}",
+            ),
+            Satır İçi Klavye Düğmesi(
+                text="â 30 Saniye",
+                geri arama_verisi=f"YÖNETİCİ 4|{sohbet_kimliği}",
+            ),
+        ],
+        [
+            Satır İçi Klavye Düğmesi(
+                metin="â—€ï¸ ",
+                callback_data=f"Sayfalar Geri|2|{videoid}|{chat_id}",
+            ),
+            Satır İçi Klavye Düğmesi(
+                text="ğŸ”™ Geri",
+                geri arama_verisi=f"Anaİşaretleme {videoid}|{sohbet_id}",
+            ),
+            Satır İçi Klavye Düğmesi(
+                metin="â–¶ï¸ ",
+                callback_data=f"İleri Sayfalar|2|{videoid}|{sohbet_id}",
+            ),
+        ],
+    ]
+    dönüş düğmeleri
+
+
+def telegram_markup_timer(_, chat_id, oynatıldı, dur, videoid):
+    bar = random.choice(seçim)
+    düğmeler = [
+        [
+            Satır İçi Klavye Düğmesi(
+                text=f"ğ —£ğ —¥ğ —˜ğ —¡ğ —¦ğ —˜ğ —¦ ğ ˜½ğ ™Šğ ™ ğ ™Ž ",
+                url=f"https://t.me/prenses_muzik_duyuru"
             )
         ],
 
         [
-            InlineKeyboardButton(
-                text=_["PL_B_2"],
-                callback_data=f"add_playlist {videoid}",
+            Satır İçi Klavye Düğmesi(
+                metin=_["PL_B_2"],
+                geri_çağrı_verisi=f"oynatma_listesi_ekle {videoid}",
             ),
-            InlineKeyboardButton(
-                text=_["PL_B_3"],
-                callback_data=f"PanelMarkup None|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                metin=_["PL_B_3"],
+                callback_data=f"PanelMarkup Yok|{chat_id}",
             ),
         ],
     ]
-    return buttons
+    dönüş düğmeleri
 
 
-# Rest of the functions remain the same...
+# Diğer fonksiyonlar aynı kalıyor...
 
 
 
-## Inline without Timer Bar
+## Zamanlayıcı Çubuğu Olmadan Satır İçi
 
 
 def stream_markup(_, videoid, chat_id):
-    buttons = [
+    düğmeler = [
         [
-            InlineKeyboardButton(
-                text=f"𝙆𝙐𝙈𝙎𝘼𝙇 𝘽𝙊𝙏𝙎", 
-                url=f"https://t.me/the_team_kumsal"
+            Satır İçi Klavye Düğmesi(
+                text=f"ğ —£ğ —¥ğ —˜ğ —¡ğ —¦ğ —˜ğ —¦ ğ ˜½ğ ™Šğ ™ ğ ™Ž",
+                url=f"https://t.me/prenses_muzik_duyuru"
             )
         ],
 
         [
-            InlineKeyboardButton(
-                text=_["PL_B_2"],
-                callback_data=f"add_playlist {videoid}",
+            Satır İçi Klavye Düğmesi(
+                metin=_["PL_B_2"],
+                geri_çağrı_verisi=f"oynatma_listesi_ekle {videoid}",
             ),
-            InlineKeyboardButton(
-                text=_["PL_B_3"],
-                callback_data=f"PanelMarkup None|{chat_id}",
-            ),
-        ],
-    ]
-    return buttons
-
-
-def telegram_markup(_, chat_id):
-    buttons = [
-        [
-            InlineKeyboardButton(
-                text=_["PL_B_3"],
-                callback_data=f"PanelMarkup None|{chat_id}",
-            ),
-            InlineKeyboardButton(
-                text=_["CLOSEMENU_BUTTON"], callback_data="close"
+            Satır İçi Klavye Düğmesi(
+                metin=_["PL_B_3"],
+                callback_data=f"PanelMarkup Yok|{chat_id}",
             ),
         ],
     ]
-    return buttons
+    dönüş düğmeleri
 
 
-## Search Query Inline
-
-
-def track_markup(_, videoid, user_id, channel, fplay):
-    buttons = [
+def telegram_markup(_, sohbet_kimliği):
+    düğmeler = [
         [
-            InlineKeyboardButton(
-                text=f"𝙆𝙐𝙈𝙎𝘼𝙇 𝘽𝙊𝙏𝙎", 
-                url=f"https://t.me/the_team_kumsal"
+            Satır İçi Klavye Düğmesi(
+                metin=_["PL_B_3"],
+                callback_data=f"PanelMarkup Yok|{chat_id}",
+            ),
+            Satır İçi Klavye Düğmesi(
+                metin=_["MENÜ_KAPATMA_DÜĞMESİ"], geri_çağrı_verisi="kapat"
+            ),
+        ],
+    ]
+    dönüş düğmeleri
+
+
+## Satır İçi Arama Sorgusu
+
+
+def track_markup(_, videoid, kullanıcı_id, kanal, fplay):
+    düğmeler = [
+        [
+            Satır İçi Klavye Düğmesi(
+                text=f"ğ —£ğ —¥ğ —˜ğ —¡ğ —¦ğ —˜ğ —¦ ğ ˜½ğ ™Šğ ™ ğ ™Ž",
+                url=f"https://t.me/prenses_muzik_duyuru"
             )
         ],
 
         [
-            InlineKeyboardButton(
-                text=_["P_B_1"],
-                callback_data=f"MusicStream {videoid}|{user_id}|a|{channel}|{fplay}",
+            Satır İçi Klavye Düğmesi(
+                metin=_["P_B_1"],
+                geri arama_verisi=f"MusicStream {videoid}|{user_id}|a|{kanal}|{fplay}",
             ),
-            InlineKeyboardButton(
-                text=_["P_B_2"],
-                callback_data=f"MusicStream {videoid}|{user_id}|v|{channel}|{fplay}",
+            Satır İçi Klavye Düğmesi(
+                metin=_["P_B_2"],
+                geri arama_verisi=f"MusicStream {videoid}|{user_id}|v|{kanal}|{fplay}",
             ),
         ],
     ]
-    return buttons
+    dönüş düğmeleri
 
 
-def playlist_markup(_, videoid, user_id, ptype, channel, fplay):
-    buttons = [
+def playlist_markup(_, videoid, user_id, ptype, kanal, fplay):
+    düğmeler = [
         [
-            InlineKeyboardButton(
-                text=f"⚡ 𝙆𝙐𝙈𝙎𝘼𝙇 𝘽𝙊𝙏𝙎 ⚡", 
-                url=f"https://t.me/the_team_kumsal"
+            Satır İçi Klavye Düğmesi(
+                text=f"âš¡ ğ —£ğ —¥ğ —˜ğ —¡ğ —¦ğ —˜ğ —¦ ğ ˜½ğ ™Šğ ™ ğ ™Ž âš¡",
+                url=f"https://t.me/prenses_muzik_duyuru"
             )
         ],
 
         [
-            InlineKeyboardButton(
-                text=_["P_B_1"],
-                callback_data=f"ArchMusicPlaylists {videoid}|{user_id}|{ptype}|a|{channel}|{fplay}",
+            Satır İçi Klavye Düğmesi(
+                metin=_["P_B_1"],
+                geri arama_verisi=f"ArchMusicÇalma Listeleri {videoid}|{kullanıcı_kimliği}|{ptype}|a|{kanal}|{fplay}",
             ),
-            InlineKeyboardButton(
-                text=_["P_B_2"],
-                callback_data=f"ArchMusicPlaylists {videoid}|{user_id}|{ptype}|v|{channel}|{fplay}",
+            Satır İçi Klavye Düğmesi(
+                metin=_["P_B_2"],
+                geri arama_verisi=f"ArchMusicÇalma Listeleri {videoid}|{kullanıcı_kimliği}|{ptype}|v|{kanal}|{fplay}",
             ),
         ],
     ]
-    return buttons
+    dönüş düğmeleri
 
 
-## Live Stream Markup
+## Canlı Yayın İşaretlemesi
 
 
-def livestream_markup(_, videoid, user_id, mode, channel, fplay):
-    buttons = [
+def livestream_markup(_, videoid, user_id, mod, kanal, fplay):
+    düğmeler = [
         [
-            InlineKeyboardButton(
-                text=_["P_B_3"],
-                callback_data=f"LiveStream {videoid}|{user_id}|{mode}|{channel}|{fplay}",
+            Satır İçi Klavye Düğmesi(
+                metin=_["P_B_3"],
+                callback_data=f"Canlı Yayın {videoid}|{user_id}|{mode}|{channel}|{fplay}",
             ),
-            InlineKeyboardButton(
-                text=_["CLOSEMENU_BUTTON"],
-                callback_data=f"forceclose {videoid}|{user_id}",
+            Satır İçi Klavye Düğmesi(
+                metin=_["MENÜYÜ_KAPATMA_DÜĞMESİ"],
+                geri arama_verisi=f"forceclose {videoid}|{kullanıcı_kimliği}",
             ),
         ],
     ]
-    return buttons
+    dönüş düğmeleri
 
 
-## Slider Query Markup
+## Kaydırıcı Sorgu İşaretlemesi
 
 
-def slider_markup(
-    _, videoid, user_id, query, query_type, channel, fplay
+def kaydırıcı_işaretleme(
+    _, videoid, kullanıcı_kimliği, sorgu, sorgu_türü, kanal, fplay
 ):
-    query = f"{query[:20]}"
-    buttons = [
+    sorgu = f"{sorgu[:20]}"
+    düğmeler = [
         [
-            InlineKeyboardButton(
-                text=_["P_B_1"],
-                callback_data=f"MusicStream {videoid}|{user_id}|a|{channel}|{fplay}",
+            Satır İçi Klavye Düğmesi(
+                metin=_["P_B_1"],
+                geri arama_verisi=f"MusicStream {videoid}|{user_id}|a|{kanal}|{fplay}",
             ),
-            InlineKeyboardButton(
-                text=_["P_B_2"],
-                callback_data=f"MusicStream {videoid}|{user_id}|v|{channel}|{fplay}",
+            Satır İçi Klavye Düğmesi(
+                metin=_["P_B_2"],
+                geri arama_verisi=f"MusicStream {videoid}|{user_id}|v|{kanal}|{fplay}",
             ),
         ],
         [
-            InlineKeyboardButton(
-                text="❮",
-                callback_data=f"slider B|{query_type}|{query}|{user_id}|{channel}|{fplay}",
+            Satır İçi Klavye Düğmesi(
+                metin="â ®",
+                geri arama_verisi=f"kaydırıcı B|{sorgu_türü}|{sorgu}|{kullanıcı_kimliği}|{kanal}|{fplay}",
             ),
-            InlineKeyboardButton(
-                text=_["CLOSE_BUTTON"],
-                callback_data=f"forceclose {query}|{user_id}",
+            Satır İçi Klavye Düğmesi(
+                metin=_["KAPAT_DÜĞMESİ"],
+                geri arama_verisi=f"forceclose {sorgu}|{kullanıcı_kimliği}",
             ),
-            InlineKeyboardButton(
-                text="❯",
-                callback_data=f"slider F|{query_type}|{query}|{user_id}|{channel}|{fplay}",
-            ),
-        ],
-    ]
-    return buttons
-
-
-## Cpanel Markup
-
-
-def panel_markup_1(_, videoid, chat_id):
-    buttons = [
-        [
-            InlineKeyboardButton(
-                text="⏸ Pause", callback_data=f"ADMIN Pause|{chat_id}"
-            ),
-            InlineKeyboardButton(
-                text="▶️ Resume",
-                callback_data=f"ADMIN Resume|{chat_id}",
-            ),
-        ],
-        [
-            InlineKeyboardButton(
-                text="⏯ Skip", callback_data=f"ADMIN Skip|{chat_id}"
-            ),
-            InlineKeyboardButton(
-                text="⏹ Stop", callback_data=f"ADMIN Stop|{chat_id}"
-            ),
-        ],
-        [
-            InlineKeyboardButton(
-                text="◀️",
-                callback_data=f"Pages Back|0|{videoid}|{chat_id}",
-            ),
-            InlineKeyboardButton(
-                text="🔙 Back",
-                callback_data=f"MainMarkup {videoid}|{chat_id}",
-            ),
-            InlineKeyboardButton(
-                text="▶️",
-                callback_data=f"Pages Forw|0|{videoid}|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                metin="â ¯",
+                geri arama_verisi=f"kaydırıcı F|{sorgu_türü}|{sorgu}|{kullanıcı_kimliği}|{kanal}|{fplay}",
             ),
         ],
     ]
-    return buttons
+    dönüş düğmeleri
 
 
-def panel_markup_2(_, videoid, chat_id):
-    buttons = [
+## Cpanel İşaretlemesi
+
+
+def panel_markup_1(_, video kimliği, chat_id):
+    düğmeler = [
         [
-            InlineKeyboardButton(
-                text="🔇 Mute", callback_data=f"ADMIN Mute|{chat_id}"
+            Satır İçi Klavye Düğmesi(
+                text="â ¸ Duraklat", callback_data=f"YÖNETİCİ Duraklat|{sohbet_kimliği}"
             ),
-            InlineKeyboardButton(
-                text="🔊 Unmute",
-                callback_data=f"ADMIN Unmute|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                text="â–¶ï¸ Özgeçmiş",
+                callback_data=f"YÖNETİCİ Özgeçmişi|{sohbet_kimliği}",
             ),
         ],
         [
-            InlineKeyboardButton(
-                text="🔀 Shuffle",
-                callback_data=f"ADMIN Shuffle|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                text="â ¯ Atla", callback_data=f"YÖNETİCİ Atla|{chat_id}"
             ),
-            InlineKeyboardButton(
-                text="🔁 Loop", callback_data=f"ADMIN Loop|{chat_id}"
+            Satır İçi Klavye Düğmesi(
+                text="â ¹ Durdur", callback_data=f"YÖNETİCİ Durdur|{sohbet_kimliği}"
             ),
         ],
         [
-            InlineKeyboardButton(
-                text="◀️",
-                callback_data=f"Pages Back|1|{videoid}|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                metin="â—€ï¸ ",
+                callback_data=f"Sayfalar Geri|0|{videoid}|{chat_id}",
             ),
-            InlineKeyboardButton(
-                text="🔙 Back",
-                callback_data=f"MainMarkup {videoid}|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                text="ğŸ”™ Geri",
+                geri arama_verisi=f"Anaİşaretleme {videoid}|{sohbet_id}",
             ),
-            InlineKeyboardButton(
-                text="▶️",
-                callback_data=f"Pages Forw|1|{videoid}|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                metin="â–¶ï¸ ",
+                callback_data=f"İleri Sayfalar|0|{videoid}|{sohbet_id}",
             ),
         ],
     ]
-    return buttons
+    dönüş düğmeleri
 
 
-def panel_markup_3(_, videoid, chat_id):
-    buttons = [
+def panel_markup_2(_, video kimliği, chat_id):
+    düğmeler = [
         [
-            InlineKeyboardButton(
-                text="⏮ 10 Seconds",
-                callback_data=f"ADMIN 1|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                text="ğŸ”‡ Sessize Al", callback_data=f"YÖNETİCİ Sessize Al|{chat_id}"
             ),
-            InlineKeyboardButton(
-                text="⏭ 10 Seconds",
-                callback_data=f"ADMIN 2|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                text="ğŸ”Š Sesi Aç",
+                callback_data=f"YÖNETİCİ Sessizliği Kaldır|{chat_id}",
             ),
         ],
         [
-            InlineKeyboardButton(
-                text="⏮ 30 Seconds",
-                callback_data=f"ADMIN 3|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                text="ğŸ”€ Karıştır",
+                callback_data=f"YÖNETİCİ Karıştırma|{sohbet_kimliği}",
             ),
-            InlineKeyboardButton(
-                text="⏭ 30 Seconds",
-                callback_data=f"ADMIN 4|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                text="ğŸ” Döngüsü", callback_data=f"YÖNETİCİ Döngüsü|{chat_id}"
             ),
         ],
         [
-            InlineKeyboardButton(
-                text="◀️",
-                callback_data=f"Pages Back|2|{videoid}|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                metin="â—€ï¸ ",
+                callback_data=f"Sayfalar Geri|1|{videoid}|{chat_id}",
             ),
-            InlineKeyboardButton(
-                text="🔙 Back",
-                callback_data=f"MainMarkup {videoid}|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                text="ğŸ”™ Geri",
+                geri arama_verisi=f"Anaİşaretleme {videoid}|{sohbet_id}",
             ),
-            InlineKeyboardButton(
-                text="▶️",
-                callback_data=f"Pages Forw|2|{videoid}|{chat_id}",
+            Satır İçi Klavye Düğmesi(
+                metin="â–¶ï¸ ",
+                callback_data=f"İleri Sayfalar|1|{videoid}|{sohbet_id}",
             ),
         ],
     ]
-    return buttons
+    dönüş düğmeleri
+
+
+def panel_markup_3(_, video kimliği, chat_id):
+    düğmeler = [
+        [
+            Satır İçi Klavye Düğmesi(
+                text="â ® 10 Saniye",
+                geri arama_verisi=f"YÖNETİCİ 1|{sohbet_kimliği}",
+            ),
+            Satır İçi Klavye Düğmesi(
+                text="â 10 Saniye",
+                geri arama_verisi=f"YÖNETİCİ 2|{sohbet_kimliği}",
+            ),
+        ],
+        [
+            Satır İçi Klavye Düğmesi(
+                text="â ® 30 Saniye",
+                geri arama_verisi=f"YÖNETİCİ 3|{sohbet_kimliği}",
+            ),
+            Satır İçi Klavye Düğmesi(
+                text="â 30 Saniye",
+                geri arama_verisi=f"YÖNETİCİ 4|{sohbet_kimliği}",
+            ),
+        ],
+        [
+            Satır İçi Klavye Düğmesi(
+                metin="â—€ï¸ ",
+                callback_data=f"Sayfalar Geri|2|{videoid}|{chat_id}",
+            ),
+            Satır İçi
