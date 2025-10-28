@@ -30,10 +30,10 @@ def start_pannel(_):
         buttons.append(
             [
                 InlineKeyboardButton(
-                    text=_["S_B_4"], url=f"https://t.me/huzundiyarii"
+                    text=_["S_B_4"], url=f"https://t.me/prenses_muzik_duyuru"
                 ),
                 InlineKeyboardButton(
-                    text=_["S_B_3"], url=f"https://t.me/huzundiyarii"
+                    text=_["S_B_3"], url=f"https://t.me/prenses_muzik_duyuru"
                 ),
             ]
         )
@@ -42,7 +42,7 @@ def start_pannel(_):
             buttons.append(
                 [
                     InlineKeyboardButton(
-                        text=_["S_B_4"], url=f"https://t.me/maviduyuru"
+                        text=_["S_B_4"], url=f"https://t.me/prenses_muzik_duyuru"
                     )
                 ]
             )
@@ -50,7 +50,7 @@ def start_pannel(_):
             buttons.append(
                 [
                     InlineKeyboardButton(
-                        text=_["S_B_3"], url=f"https://t.me/maviduyuru"
+                        text=_["S_B_3"], url=f"https://t.me/prenses_muzik_duyuru"
                     )
                 ]
             )
@@ -69,10 +69,10 @@ def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
         buttons.append(
             [
                 InlineKeyboardButton(
-                    text=_["S_B_4"], url=f"https://t.me/maviduyuru"
+                    text=_["S_B_4"], url=f"https://t.me/prenses_muzik_duyuru"
                 ),
                 InlineKeyboardButton(
-                    text=_["S_B_3"], url=f"https://t.me/maviduyuru"
+                    text=_["S_B_3"], url=f"https://t.me/prenses_muzik_duyuru"
                 ),
             ]
         )
@@ -81,7 +81,7 @@ def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
             buttons.append(
                 [
                     InlineKeyboardButton(
-                        text=_["S_B_4"], url=f"https://t.me/maviduyuru"
+                        text=_["S_B_4"], url=f"https://t.me/prenses_muzik_duyuru"
                     )
                 ]
             )
@@ -89,7 +89,7 @@ def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
             buttons.append(
                 [
                     InlineKeyboardButton(
-                        text=_["S_B_3"], url=f"https://t.me/maviduyuru"
+                        text=_["S_B_3"], url=f"https://t.me/prenses_muzik_duyuru"
                     )
                 ]
             )
@@ -106,7 +106,7 @@ def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
             [
                 InlineKeyboardButton(text=_["S_B_7"], user_id=OWNER),
                 InlineKeyboardButton(
-                    text=_["S_B_6"], url=f"https://t.me/huzundiyarii"
+                    text=_["S_B_6"], url=f"https://t.me/prenses_muzik_duyuru"
                 ),
             ]
         )
@@ -115,7 +115,7 @@ def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
             buttons.append(
                 [
                     InlineKeyboardButton(
-                        text=_["S_B_6"], url=f"https://t.me/huzundiyarii"
+                        text=_["S_B_6"], url=f"https://t.me/prenses_muzik_duyuru"
                     ),
                 ]
             )
