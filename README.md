@@ -53,6 +53,13 @@ screen -S "botunuzunAdi"
 chmod 777 *
 </code>
 
+
+<p align="center">
+<a href="https://heroku.com/deploy?template=https://github.com/askimyavas7-tech/M.git">
+<img src="https://www.herokucdn.com/deploy/button.svg" width="200">
+</a>
+</p>
+
 ## Bunları yaptıktan sonra;
 
 <code>screen bash start</code> ya da <code>screen ./start</code> yapın.
